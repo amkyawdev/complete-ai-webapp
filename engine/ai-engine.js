@@ -19,7 +19,8 @@ class AIEngine {
     async init() {
         console.log('AI Engine initializing...');
         await this.loadData();
-        console.log('AI Engine initialized with data');
+        this.loadBrainMemories();
+        console.log('AI Engine initialized with data and brain memories');
     }
 
     /**
@@ -56,6 +57,48 @@ class AIEngine {
      */
     setLanguage(lang) {
         this.currentLang = lang === 'mm' || lang === 'eng' ? lang : 'mm';
+    }
+
+    /**
+     * Load brain memories
+     */
+    loadBrainMemories() {
+        try {
+            const brainData = localStorage.getItem('ai-brain-memories');
+            if (brainData) {
+                const parsed = JSON.parse(brainData);
+                if (parsed.memories && Array.isArray(parsed.memories)) {
+                    // Add brain memories to data
+                    const brainMemories = {
+                        brain: parsed.memories.map(m => ({
+                            input: m.input,
+                            output: m.output,
+                            category: m.category || 'brain'
+                        }))
+                    };
+                    
+                    // Merge with existing data
+                    if (!this.data.mm.chat) this.data.mm.chat = {};
+                    if (!this.data.eng.chat) this.data.eng.chat = {};
+                    
+                    this.data.mm.chat.brain = brainMemories;
+                    this.data.eng.chat.brain = brainMemories;
+                    
+                    console.log('Brain memories loaded:', parsed.memories.length);
+                }
+            }
+        } catch (error) {
+            console.error('Error loading brain memories:', error);
+        }
+    }
+
+    /**
+     * Get categories from data
+     */
+    getCategories(lang) {
+        const langData = this.data[lang];
+        if (!langData.chat) return [];
+        return Object.keys(langData.chat);
     }
 
     /**
