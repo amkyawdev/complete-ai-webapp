@@ -1,0 +1,16 @@
+{
+    "texts": [
+        {
+            "id": 1,
+            "title": "History of AI",
+            "content": "The history of AI began in antiquity, with myths, stories and rumors of artificial beings endowed with intelligence.",
+            "tags": ["AI", "history"]
+        },
+        {
+            "id": 2,
+            "title": "Machine Learning Basics",
+            "content": "Machine Learning is a subset of AI that enables systems to automatically learn and improve from experience.",
+            "tags": ["ML", "AI"]
+        }
+    ]
+}

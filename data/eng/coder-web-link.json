@@ -5,14 +5,14 @@
             "title": "Hello World - Python",
             "code": "print('Hello, World!')",
             "language": "python",
-            "description": "Basic Python hello world example"
+            "description": "Basic Python hello world"
         },
         {
             "id": 2,
             "title": "Hello World - JavaScript",
             "code": "console.log('Hello, World!');",
             "language": "javascript",
-            "description": "Basic JavaScript hello world example"
+            "description": "Basic JavaScript hello world"
         },
         {
             "id": 3,

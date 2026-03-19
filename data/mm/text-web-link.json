@@ -1,0 +1,16 @@
+{
+    "texts": [
+        {
+            "id": 1,
+            "title": "AI သမိုင်း",
+            "content": "Artificial Intelligence သမိုင်းသည် ၁၉၅၆ ခုနှစ်မှာ စတင်ခဲ့ပါတယ်။",
+            "tags": ["AI", "သမိုင်း"]
+        },
+        {
+            "id": 2,
+            "title": "Machine Learning",
+            "content": "Machine Learning ဆိုတာ ကွန်ပျုတာများကို ဒေတာများကနေ သင်ယူလို့ရတဲ့ နည်းလမ်းပါတယ်။",
+            "tags": ["ML", "AI"]
+        }
+    ]
+}

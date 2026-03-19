@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Brain Training - AmkyawDev AI</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body x-data="brainPage()" x-init="init()" :class="{'is-clipped': isMenuOpen}">
+    
+    <!-- Desktop Sidebar -->
+    <aside class="sidebar is-desktop" :class="{'is-active': isMenuOpen}">
+        <div class="sidebar-header">
+            <p class="title is-4 has-text-white">
+                <i class="fas fa-brain"></i> AI Brain
+            </p>
+            <p class="subtitle is-6 has-text-grey-light">Training System</p>
+        </div>
+        
+        <nav class="sidebar-menu">
+            <a href="../index.html" class="sidebar-item">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="../pages/chat.html" class="sidebar-item">
+                <i class="fas fa-comments"></i>
+                <span>Chat</span>
+            </a>
+            <a href="brain.html" class="sidebar-item is-active">
+                <i class="fas fa-brain"></i>
+                <span>Train AI</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Mobile Header -->
+    <header class="mobile-header is-hidden-desktop">
+        <button class="hamburger-btn" @click="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <p class="title is-5">
+            <i class="fas fa-brain"></i> AI Brain
+        </p>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-overlay is-hidden-desktop" :class="{'is-active': isMenuOpen}" @click="closeMenu()"></div>
+
+    <!-- Mobile Menu -->
+    <nav class="mobile-menu is-hidden-desktop" :class="{'is-open': isMenuOpen}">
+        <div class="mobile-menu-header">
+            <p class="title is-4 has-text-white">
+                <i class="fas fa-brain"></i> AI Brain
+            </p>
+            <button class="close-btn" @click="closeMenu()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="mobile-menu-items">
+            <a href="../index.html" class="mobile-menu-item" @click="closeMenu()">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="../pages/chat.html" class="mobile-menu-item" @click="closeMenu()">
+                <i class="fas fa-comments"></i>
+                <span>Chat</span>
+            </a>
+            <a href="brain.html" class="mobile-menu-item" @click="closeMenu()">
+                <i class="fas fa-brain"></i>
+                <span>Train AI</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content" :class="{'with-sidebar': !isMobile()}">
+        <div class="container">
+            <section class="section">
+                <h1 class="title is-3">
+                    <i class="fas fa-brain"></i>
+                    <span x-text="getLabel('brainTraining')"></span>
+                </h1>
+                
+                <!-- Training Stats -->
+                <div class="columns">
+                    <div class="column is-3">
+                        <div class="stat-card primary">
+                            <div class="stat-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <div class="stat-info">
+                                <p class="stat-value" x-text="stats.totalMemories"></p>
+                                <p class="stat-label" x-text="getLabel('totalMemories')"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-3">
+                        <div class="stat-card success">
+                            <div class="stat-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="stat-info">
+                                <p class="stat-value" x-text="stats.trainedPatterns"></p>
+                                <p class="stat-label" x-text="getLabel('patterns')"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-3">
+                        <div class="stat-card warning">
+                            <div class="stat-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="stat-info">
+                                <p class="stat-value" x-text="stats.lastTraining"></p>
+                                <p class="stat-label" x-text="getLabel('lastTrain')"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-3">
+                        <div class="stat-card danger">
+                            <div class="stat-icon">
+                                <i class="fas fa-percentage"></i>
+                            </div>
+                            <div class="stat-info">
+                                <p class="stat-value" x-text="stats.accuracy + '%'"></p>
+                                <p class="stat-label" x-text="getLabel('accuracy')"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Training Panel -->
+                <div class="columns">
+                    <div class="column is-6">
+                        <div class="card">
+                            <header class="card-header">
+                                <p class="card-header-title" x-text="getLabel('addMemory')"></p>
+                            </header>
+                            <div class="card-content">
+                                <div class="field">
+                                    <label class="label" x-text="getLabel('inputPattern')"></label>
+                                    <div class="control">
+                                        <input type="text" class="input" :placeholder="getLabel('inputPlaceholder')" x-model="newMemory.input">
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <label class="label" x-text="getLabel('expectedOutput')"></label>
+                                    <div class="control">
+                                        <input type="text" class="input" :placeholder="getLabel('outputPlaceholder')" x-model="newMemory.output">
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <label class="label" x-text="getLabel('category')"></label>
+                                    <div class="control">
+                                        <div class="select is-fullwidth">
+                                            <select x-model="newMemory.category">
+                                                <option value="general">General</option>
+                                                <option value="greeting">Greeting</option>
+                                                <option value="question">Question</option>
+                                                <option value="command">Command</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <button class="button is-primary is-fullwidth" @click="trainMemory()">
+                                        <span class="icon"><i class="fas fa-graduation-cap"></i></span>
+                                        <span x-text="getLabel('train')"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="column is-6">
+                        <div class="card">
+                            <header class="card-header">
+                                <p class="card-header-title" x-text="getLabel('testAI')"></p>
+                            </header>
+                            <div class="card-content">
+                                <div class="field">
+                                    <label class="label" x-text="getLabel('testInput')"></label>
+                                    <div class="control has-icons-right">
+                                        <input type="text" class="input" :placeholder="getLabel('testPlaceholder')" x-model="testInput" @keyup.enter="testAI()">
+                                        <span class="icon is-right">
+                                            <i class="fas fa-robot"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="field" x-show="testOutput">
+                                    <label class="label" x-text="getLabel('response')"></label>
+                                    <div class="notification is-info is-light">
+                                        <p x-text="testOutput"></p>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <button class="button is-info is-fullwidth" @click="testAI()" :disabled="!testInput">
+                                        <span class="icon"><i class="fas fa-paper-plane"></i></span>
+                                        <span x-text="getLabel('test')"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Memory List -->
+                <div class="card">
+                    <header class="card-header">
+                        <p class="card-header-title" x-text="getLabel('memoryList')"></p>
+                        <button class="card-header-icon" @click="exportMemories()">
+                            <span class="icon"><i class="fas fa-download"></i></span>
+                        </button>
+                    </header>
+                    <div class="card-content">
+                        <div class="table-container">
+                            <table class="table is-fullwidth is-hoverable">
+                                <thead>
+                                    <tr>
+                                        <th x-text="getLabel('input')"></th>
+                                        <th x-text="getLabel('output')"></th>
+                                        <th x-text="getLabel('category')"></th>
+                                        <th x-text="getLabel('actions')"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <template x-for="memory in memories" :key="memory.id">
+                                        <tr>
+                                            <td x-text="memory.input"></td>
+                                            <td x-text="memory.output"></td>
+                                            <td>
+                                                <span class="tag" :class="getCategoryClass(memory.category)" x-text="memory.category"></span>
+                                            </td>
+                                            <td>
+                                                <button class="button is-small is-danger is-light" @click="deleteMemory(memory.id)">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </template>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="notification is-light" x-show="memories.length === 0" x-text="getLabel('noMemories')"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="../js/main.js"></script>
+    <script src="memory.js"></script>
+    <script src="brain.js"></script>
+</body>
+</html>

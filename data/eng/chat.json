@@ -1,0 +1,58 @@
+{
+    "greetings": [
+        {
+            "id": 1,
+            "input": "hello",
+            "output": "Hello! How can I help you today?",
+            "category": "greeting"
+        },
+        {
+            "id": 2,
+            "input": "hi",
+            "output": "Hi there! What can I do for you?",
+            "category": "greeting"
+        },
+        {
+            "id": 3,
+            "input": "good morning",
+            "output": "Good morning! How are you today?",
+            "category": "greeting"
+        }
+    ],
+    "questions": [
+        {
+            "id": 1,
+            "input": "what are you",
+            "output": "I'm an AI assistant designed to help you with various tasks.",
+            "category": "question"
+        },
+        {
+            "id": 2,
+            "input": "how are you",
+            "output": "I'm doing great! Thank you for asking. How can I assist you?",
+            "category": "question"
+        }
+    ],
+    "commands": [
+        {
+            "id": 1,
+            "input": "clear",
+            "output": "Chat cleared!",
+            "category": "command"
+        },
+        {
+            "id": 2,
+            "input": "help",
+            "output": "I can help you with: chat, search, information, and more. Just ask!",
+            "category": "command"
+        }
+    ],
+    "general": [
+        {
+            "id": 1,
+            "input": "thank you",
+            "output": "You're welcome! Happy to help!",
+            "category": "general"
+        }
+    ]
+}

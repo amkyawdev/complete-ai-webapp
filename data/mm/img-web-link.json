@@ -1,0 +1,16 @@
+{
+    "images": [
+        {
+            "id": 1,
+            "title": "AI ပုံ",
+            "url": "/data/mm/images/ai-tech.jpg",
+            "description": "AI နည်းပညာ"
+        },
+        {
+            "id": 2,
+            "title": "Programming ပုံ",
+            "url": "/data/mm/images/programming.jpg",
+            "description": "ပါမောက္ခများ"
+        }
+    ]
+}
