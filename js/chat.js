@@ -59,8 +59,11 @@ function chatPage() {
             // Initialize AI Engine
             if (typeof AIEngine !== 'undefined') {
                 window.aiChatEngine = new AIEngine();
-                window.aiChatEngine.init();
-                console.log('AI Engine connected to chat');
+                window.aiChatEngine.init().then(() => {
+                    console.log('AI Engine connected to chat with data');
+                }).catch(err => {
+                    console.error('Failed to initialize AI Engine:', err);
+                });
             }
             
             window.addEventListener('resize', () => this.checkScreenSize());
@@ -145,44 +148,58 @@ function chatPage() {
         },
         
         addBotResponse(userMessage) {
-            // Use AI Engine if available
-            if (typeof AIEngine !== 'undefined') {
-                const ai = window.aiChatEngine || new AIEngine();
-                const response = ai.simulateAIResponse(userMessage);
+            // Use AI Engine if available - use generateResponse which searches data first
+            if (typeof AIEngine !== 'undefined' && window.aiChatEngine) {
+                const ai = window.aiChatEngine;
                 
-                this.messages.push({
-                    role: 'bot',
-                    content: response,
-                    time: this.getCurrentTime()
+                // Use async generateResponse which searches data first
+                ai.generateResponse(userMessage).then(response => {
+                    this.messages.push({
+                        role: 'bot',
+                        content: response,
+                        time: this.getCurrentTime()
+                    });
+                    
+                    this.$nextTick(() => {
+                        this.scrollToBottom();
+                    });
+                }).catch(err => {
+                    console.error('AI response error:', err);
+                    // Fallback on error
+                    this.addFallbackResponse();
                 });
             } else {
                 // Fallback to static responses
-                const responses = {
-                    mm: [
-                        'ဟုတ်ကဲ့။ ဒါကို ကျွန်တော်နားလည်ပါတယ်။',
-                        'သင့်မေးခွန်းကို ဖြေကြားပါမယ်။',
-                        'ဒါဟာ အလွန်စိတ်ဝင်စားစွာပါပါ။',
-                        'သင့်အတွက် ပါဝင်ပါမယ်။',
-                        'ခွင့်လွှတ်ပါ။ ဒါကို သတင်းအရင်းအမြစ်များနဲ့ ရှာဖွေပါမယ်။'
-                    ],
-                    eng: [
-                        'I understand. Let me help you with that.',
-                        'That\'s an interesting question. Let me answer it.',
-                        'I\'m here to help! Could you provide more details?',
-                        'Great question! Here\'s what I know.',
-                        'Let me process that information for you.'
-                    ]
-                };
-                
-                const langResponses = responses[this.lang];
-                const randomResponse = langResponses[Math.floor(Math.random() * langResponses.length)];
-                
-                this.messages.push({
-                    role: 'bot',
-                    content: randomResponse,
-                    time: this.getCurrentTime()
-                });
+                this.addFallbackResponse();
             }
+        },
+        
+        addFallbackResponse() {
+            const responses = {
+                mm: [
+                    'ဟုတ်ကဲ့။ ဒါကို ကျွန်တော်နားလည်ပါတယ်။',
+                    'သင့်မေးခွန်းကို ဖြေကြားပါမယ်။',
+                    'ဒါဟာ အလွန်စိတ်ဝင်စားစွာပါပါ။',
+                    'သင့်အတွက် ပါဝင်ပါမယ်။',
+                    'ခွင့်လွှတ်ပါ။ ဒါကို သတင်းအရင်းအမြစ်များနဲ့ ရှာဖွေပါမယ်။'
+                ],
+                eng: [
+                    'I understand. Let me help you with that.',
+                    'That\'s an interesting question. Let me answer it.',
+                    'I\'m here to help! Could you provide more details?',
+                    'Great question! Here\'s what I know.',
+                    'Let me process that information for you.'
+                ]
+            };
+            
+            const langResponses = responses[this.lang];
+            const randomResponse = langResponses[Math.floor(Math.random() * langResponses.length)];
+            
+            this.messages.push({
+                role: 'bot',
+                content: randomResponse,
+                time: this.getCurrentTime()
+            });
             
             this.$nextTick(() => {
                 this.scrollToBottom();

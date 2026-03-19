@@ -9,13 +9,49 @@ class AIEngine {
         this.temperature = 0.7;
         this.maxTokens = 1000;
         this.conversationHistory = [];
+        this.data = { mm: {}, eng: {} };
+        this.currentLang = 'mm';
     }
 
     /**
      * Initialize the AI engine
      */
-    init() {
-        console.log('AI Engine initialized');
+    async init() {
+        console.log('AI Engine initializing...');
+        await this.loadData();
+        console.log('AI Engine initialized with data');
+    }
+
+    /**
+     * Load data from JSON files
+     */
+    async loadData() {
+        try {
+            // Load Myanmar data
+            const mmChatRes = await fetch('data/mm/chat.json');
+            this.data.mm.chat = await mmChatRes.json();
+            
+            const mmWebLinkRes = await fetch('data/mm/web-link.json');
+            this.data.mm.webLink = await mmWebLinkRes.json();
+            
+            // Load English data
+            const engChatRes = await fetch('data/eng/chat.json');
+            this.data.eng.chat = await engChatRes.json();
+            
+            const engWebLinkRes = await fetch('data/eng/knowledge-web-link.json');
+            this.data.eng.webLink = await engWebLinkRes.json();
+            
+            console.log('Data loaded successfully');
+        } catch (error) {
+            console.error('Error loading data:', error);
+        }
+    }
+
+    /**
+     * Set current language
+     */
+    setLanguage(lang) {
+        this.currentLang = lang === 'mm' || lang === 'eng' ? lang : 'mm';
     }
 
     /**
@@ -47,20 +83,66 @@ class AIEngine {
     }
 
     /**
+     * Search data for matching response
+     */
+    searchData(query, lang) {
+        const langData = this.data[lang];
+        if (!langData.chat) return null;
+        
+        const chatData = langData.chat;
+        const lowerQuery = query.toLowerCase();
+        
+        // Search through all categories
+        for (const category of Object.keys(chatData)) {
+            const items = chatData[category];
+            if (Array.isArray(items)) {
+                for (const item of items) {
+                    if (item.input && item.output) {
+                        // Check for exact or partial match
+                        if (lowerQuery.includes(item.input.toLowerCase()) || 
+                            item.input.toLowerCase().includes(lowerQuery)) {
+                            return {
+                                output: item.output,
+                                category: category,
+                                matched: item.input
+                            };
+                        }
+                    }
+                }
+            }
+        }
+        
+        // If no match found, return null
+        return null;
+    }
+
+    /**
      * Generate response from AI
      */
     async generateResponse(userMessage) {
         this.addMessage('user', userMessage);
         
-        // Simulate AI response (in production, this would call an actual AI API)
-        const response = await this.simulateAIResponse(userMessage);
+        // Detect language
+        const lang = this.detectLanguage(userMessage);
+        this.setLanguage(lang);
+        
+        // Search data first
+        const dataResult = this.searchData(userMessage, lang);
+        
+        let response;
+        if (dataResult) {
+            response = dataResult.output;
+        } else {
+            // Fallback to simulated response
+            response = await this.simulateAIResponse(userMessage);
+        }
         
         this.addMessage('assistant', response);
         return response;
     }
 
     /**
-     * Simulate AI response
+     * Simulate AI response (fallback)
      */
     simulateAIResponse(input) {
         const responses = {
