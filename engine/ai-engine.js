@@ -140,10 +140,16 @@ class AIEngine {
      */
     searchData(query, lang) {
         const langData = this.data[lang];
-        if (!langData.chat) return null;
+        if (!langData || !langData.chat) {
+            console.log('No chat data for lang:', lang, this.data);
+            return null;
+        }
         
         const chatData = langData.chat;
         const lowerQuery = query.toLowerCase();
+        
+        console.log('Searching for:', lowerQuery, 'in', lang);
+        console.log('Categories:', Object.keys(chatData));
         
         // Search through all categories
         for (const category of Object.keys(chatData)) {
@@ -151,9 +157,10 @@ class AIEngine {
             if (Array.isArray(items)) {
                 for (const item of items) {
                     if (item.input && item.output) {
+                        const inputLower = item.input.toLowerCase();
                         // Check for exact or partial match
-                        if (lowerQuery.includes(item.input.toLowerCase()) || 
-                            item.input.toLowerCase().includes(lowerQuery)) {
+                        if (lowerQuery.includes(inputLower) || inputLower.includes(lowerQuery)) {
+                            console.log('Found match:', item.input, '->', item.output);
                             return {
                                 output: item.output,
                                 category: category,
@@ -165,6 +172,7 @@ class AIEngine {
             }
         }
         
+        console.log('No match found for:', lowerQuery);
         // If no match found, return null
         return null;
     }
