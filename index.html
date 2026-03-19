@@ -46,6 +46,12 @@
         </nav>
         
         <div class="sidebar-footer">
+            <!-- Theme Toggle -->
+            <div class="theme-toggle">
+                <button class="theme-btn" @click="toggleTheme()" :title="theme === 'light' ? 'Dark Mode' : 'Light Mode'">
+                    <i class="fas" :class="theme === 'light' ? 'fa-moon' : 'fa-sun'"></i>
+                </button>
+            </div>
             <div class="language-switcher">
                 <button class="button is-small" :class="lang === 'mm' ? 'is-primary' : 'is-dark'" @click="setLang('mm')">🇲🇲 မြန်မာ</button>
                 <button class="button is-small" :class="lang === 'eng' ? 'is-primary' : 'is-dark'" @click="setLang('eng')">🇬🇧 English</button>

@@ -94,6 +94,11 @@ function dashboardPage() {
                 { id: 'messages', value: '12,456', label: this.getLabel('messages'), icon: 'fas fa-envelope', color: 'success' },
                 { id: 'users', value: '856', label: this.getLabel('users'), icon: 'fas fa-users', color: 'warning' },
                 { id: 'api', value: '45.2K', label: this.getLabel('apiCalls'), icon: 'fas fa-plug', color: 'danger' }
+
+        toggleTheme() {
+            this.theme = this.theme === 'light' ? 'dark' : 'light';
+            this.saveSettings();
+        },
             ];
             
             // Chart data (last 7 days)

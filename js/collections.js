@@ -143,6 +143,11 @@ function collectionsPage() {
                     tags: ['Data Science', 'Interview', 'Questions'],
                     category: 'questions'
                 }
+
+        toggleTheme() {
+            this.theme = this.theme === 'light' ? 'dark' : 'light';
+            this.saveSettings();
+        },
             ];
         },
         

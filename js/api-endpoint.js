@@ -117,6 +117,11 @@ function endpointPage() {
             if (this.headers.length === 0) {
                 this.addHeader();
             }
+
+        toggleTheme() {
+            this.theme = this.theme === 'light' ? 'dark' : 'light';
+            this.saveSettings();
+        },
         },
         
         // Send request

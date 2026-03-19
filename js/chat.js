@@ -82,6 +82,11 @@ function chatPage() {
             document.body.style.overflow = '';
         },
         
+        toggleTheme() {
+            this.theme = this.theme === 'light' ? 'dark' : 'light';
+            this.saveSettings();
+        },
+        
         // Chat methods
         addWelcomeMessage() {
             const welcomeMsg = this.lang === 'mm' 

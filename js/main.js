@@ -110,6 +110,11 @@ function app() {
             this.closeMenu();
         },
         
+        toggleTheme() {
+            this.theme = this.theme === 'light' ? 'dark' : 'light';
+            this.saveSettings();
+        },
+        
         getLabel(key) {
             return translations[this.lang][key] || key;
         },
