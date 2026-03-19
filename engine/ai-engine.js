@@ -27,21 +27,25 @@ class AIEngine {
      */
     async loadData() {
         try {
+            // Determine correct path based on current location
+            const isInPages = window.location.pathname.includes('/pages/');
+            const basePath = isInPages ? '../' : './';
+            
             // Load Myanmar data
-            const mmChatRes = await fetch('data/mm/chat.json');
+            const mmChatRes = await fetch(basePath + 'data/mm/chat.json');
             this.data.mm.chat = await mmChatRes.json();
             
-            const mmWebLinkRes = await fetch('data/mm/web-link.json');
+            const mmWebLinkRes = await fetch(basePath + 'data/mm/web-link.json');
             this.data.mm.webLink = await mmWebLinkRes.json();
             
             // Load English data
-            const engChatRes = await fetch('data/eng/chat.json');
+            const engChatRes = await fetch(basePath + 'data/eng/chat.json');
             this.data.eng.chat = await engChatRes.json();
             
-            const engWebLinkRes = await fetch('data/eng/knowledge-web-link.json');
+            const engWebLinkRes = await fetch(basePath + 'data/eng/knowledge-web-link.json');
             this.data.eng.webLink = await engWebLinkRes.json();
             
-            console.log('Data loaded successfully');
+            console.log('Data loaded successfully from', basePath + 'data/');
         } catch (error) {
             console.error('Error loading data:', error);
         }
