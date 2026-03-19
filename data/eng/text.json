@@ -1,0 +1,16 @@
+{
+    "texts": [
+        {
+            "id": 1,
+            "title": "English AI Content",
+            "content": "AI technology is rapidly advancing and changing the way we live and work.",
+            "category": "technology"
+        },
+        {
+            "id": 2,
+            "title": "Programming Basics",
+            "content": "Programming is the process of creating instructions for a computer to execute.",
+            "category": "programming"
+        }
+    ]
+}

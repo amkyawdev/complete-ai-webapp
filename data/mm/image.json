@@ -1,0 +1,16 @@
+{
+    "images": [
+        {
+            "id": 1,
+            "title": "AI ပါဝင်မှု",
+            "url": "/data/mm/images/ai-tech.jpg",
+            "description": "AI နည်းပညာပါဝင်ပါတယ်။"
+        },
+        {
+            "id": 2,
+            "title": "ပါမောက္ခများ",
+            "url": "/data/mm/images/programming.jpg",
+            "description": "ပါမောက္ခများပါဝင်ပါတယ်။"
+        }
+    ]
+}

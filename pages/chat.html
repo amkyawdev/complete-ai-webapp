@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat - AmkyawDev AI</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/chat.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body x-data="chatPage()" x-init="init()" :class="{'is-clipped': isMenuOpen}">
+    
+    <!-- Desktop Sidebar -->
+    <aside class="sidebar is-desktop" :class="{'is-active': isMenuOpen}">
+        <div class="sidebar-header">
+            <p class="title is-4 has-text-white">
+                <i class="fas fa-robot"></i> AmkyawDev
+            </p>
+            <p class="subtitle is-6 has-text-grey-light">AI WebApp</p>
+        </div>
+        
+        <nav class="sidebar-menu">
+            <a href="../index.html" class="sidebar-item" :class="{'is-active': currentPage === 'home'}">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="chat.html" class="sidebar-item" :class="{'is-active': currentPage === 'chat'}">
+                <i class="fas fa-comments"></i>
+                <span>Chat</span>
+            </a>
+            <a href="endpoint.html" class="sidebar-item" :class="{'is-active': currentPage === 'endpoint'}">
+                <i class="fas fa-plug"></i>
+                <span>API Tester</span>
+            </a>
+            <a href="dashboard.html" class="sidebar-item" :class="{'is-active': currentPage === 'dashboard'}">
+                <i class="fas fa-chart-line"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="collections.html" class="sidebar-item" :class="{'is-active': currentPage === 'collections'}">
+                <i class="fas fa-folder"></i>
+                <span>Collections</span>
+            </a>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <div class="language-switcher">
+                <button class="button is-small" :class="lang === 'mm' ? 'is-primary' : 'is-dark'" @click="setLang('mm')">🇲🇲 မြန်မာ</button>
+                <button class="button is-small" :class="lang === 'eng' ? 'is-primary' : 'is-dark'" @click="setLang('eng')">🇬🇧 English</button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Mobile Header -->
+    <header class="mobile-header is-hidden-desktop">
+        <button class="hamburger-btn" @click="toggleMenu()" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <p class="title is-5">
+            <i class="fas fa-robot"></i> AmkyawDev
+        </p>
+        <button class="button is-small is-white is-rounded" @click="showOptions = true">
+            <i class="fas fa-ellipsis-v"></i>
+        </button>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-overlay is-hidden-desktop" :class="{'is-active': isMenuOpen}" @click="closeMenu()"></div>
+
+    <!-- Mobile Menu -->
+    <nav class="mobile-menu is-hidden-desktop" :class="{'is-open': isMenuOpen}">
+        <div class="mobile-menu-header">
+            <p class="title is-4 has-text-white">
+                <i class="fas fa-robot"></i> AmkyawDev
+            </p>
+            <button class="close-btn" @click="closeMenu()" aria-label="Close menu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="mobile-menu-items">
+            <a href="../index.html" class="mobile-menu-item" @click="closeMenu()">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="chat.html" class="mobile-menu-item" @click="closeMenu()">
+                <i class="fas fa-comments"></i>
+                <span>Chat</span>
+            </a>
+            <a href="endpoint.html" class="mobile-menu-item" @click="closeMenu()">
+                <i class="fas fa-plug"></i>
+                <span>API Tester</span>
+            </a>
+            <a href="dashboard.html" class="mobile-menu-item" @click="closeMenu()">
+                <i class="fas fa-chart-line"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="collections.html" class="mobile-menu-item" @click="closeMenu()">
+                <i class="fas fa-folder"></i>
+                <span>Collections</span>
+            </a>
+        </div>
+        
+        <div class="mobile-menu-footer">
+            <div class="language-switcher">
+                <button class="button is-small" :class="lang === 'mm' ? 'is-primary' : 'is-dark'" @click="setLang('mm')">🇲ဲ မြန်မာ</button>
+                <button class="button is-small" :class="lang === 'eng' ? 'is-primary' : 'is-dark'" @click="setLang('eng')">🇬🇧 English</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Chat Container -->
+    <main class="main-content chat-layout" :class="{'with-sidebar': !isMobile()}">
+        <!-- Chat Messages -->
+        <div class="chat-container" id="chatContainer">
+            <template x-for="(message, index) in messages" :key="index">
+                <div class="message" :class="message.role">
+                    <div class="message-avatar">
+                        <i :class="message.role === 'user' ? 'fas fa-user' : 'fas fa-robot'"></i>
+                    </div>
+                    <div class="message-content">
+                        <div class="message-bubble">
+                            <p x-html="message.content"></p>
+                        </div>
+                        <span class="message-time" x-text="message.time"></span>
+                    </div>
+                </div>
+            </template>
+            
+            <!-- Typing Indicator -->
+            <div class="message bot typing" x-show="isTyping" x-transition>
+                <div class="message-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="message-content">
+                    <div class="message-bubble typing-indicator">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Scroll to bottom indicator -->
+            <button class="scroll-to-bottom" x-show="showScrollButton" @click="scrollToBottom()" x-transition>
+                <i class="fas fa-arrow-down"></i>
+            </button>
+        </div>
+
+        <!-- Chat Input -->
+        <div class="chat-input-container">
+            <div class="chat-input-wrapper">
+                <button class="input-action-btn" @click="showEmojiPicker = !showEmojiPicker">
+                    <i class="fas fa-smile"></i>
+                </button>
+                <textarea 
+                    class="chat-input" 
+                    :placeholder="getLabel('messagePlaceholder')"
+                    x-model="inputMessage"
+                    @keydown.enter.exact.prevent="sendMessage()"
+                    @input="autoResize($event)"
+                    rows="1"
+                ></textarea>
+                <button class="input-action-btn" @click="showAttachments = !showAttachments">
+                    <i class="fas fa-paperclip"></i>
+                </button>
+                <button class="send-button" @click="sendMessage()" :disabled="!inputMessage.trim()">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+            
+            <!-- Attachment Options -->
+            <div class="attachment-options" x-show="showAttachments" x-transition>
+                <button class="attachment-btn" @click="attachFile('image')">
+                    <i class="fas fa-image"></i>
+                    <span x-text="getLabel('image')"></span>
+                </button>
+                <button class="attachment-btn" @click="attachFile('document')">
+                    <i class="fas fa-file"></i>
+                    <span x-text="getLabel('document')"></span>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Options Dialog -->
+    <div class="dialog-overlay" :class="{'is-active': showOptions}" @click.self="showOptions = false">
+        <div class="dialog-box options-dialog" role="dialog" aria-modal="true">
+            <header class="dialog-header">
+                <p class="title is-5" x-text="getLabel('options')"></p>
+                <button class="delete" aria-label="close" @click="showOptions = false"></button>
+            </header>
+            <div class="dialog-content">
+                <div class="options-list">
+                    <button class="option-item" @click="newChat()">
+                        <i class="fas fa-plus-circle"></i>
+                        <span x-text="getLabel('newChat')"></span>
+                    </button>
+                    <button class="option-item" @click="clearChat()">
+                        <i class="fas fa-trash"></i>
+                        <span x-text="getLabel('clearChat')"></span>
+                    </button>
+                    <button class="option-item" @click="exportChat()">
+                        <i class="fas fa-download"></i>
+                        <span x-text="getLabel('exportChat')"></span>
+                    </button>
+                    <button class="option-item" @click="showSettingsDialog()">
+                        <i class="fas fa-cog"></i>
+                        <span x-text="getLabel('settings')"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Dialog -->
+    <div class="dialog-overlay" :class="{'is-active': showSettings}" @click.self="showSettings = false">
+        <div class="dialog-box" role="dialog" aria-modal="true">
+            <header class="dialog-header">
+                <p class="title is-5" x-text="getLabel('settings')"></p>
+                <button class="delete" aria-label="close" @click="showSettings = false"></button>
+            </header>
+            <div class="dialog-content">
+                <div class="field">
+                    <label class="label" x-text="getLabel('language')"></label>
+                    <div class="control">
+                        <div class="select is-fullwidth">
+                            <select x-model="lang" @change="saveSettings()">
+                                <option value="mm">🇲🇲 မြန်မာ</option>
+                                <option value="eng">🇬🇧 English</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label" x-text="getLabel('aiModel')"></label>
+                    <div class="control">
+                        <div class="select is-fullwidth">
+                            <select x-model="aiModel">
+                                <option value="gpt-4">GPT-4</option>
+                                <option value="gpt-3.5">GPT-3.5</option>
+                                <option value="claude">Claude</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="dialog-footer">
+                <button class="button is-primary" @click="showSettings = false" x-text="getLabel('close')"></button>
+            </footer>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/chat.js"></script>
+</body>
+</html>

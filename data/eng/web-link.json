@@ -1,0 +1,25 @@
+{
+    "links": [
+        {
+            "id": 1,
+            "title": "Google",
+            "url": "https://www.google.com",
+            "description": "Search engine",
+            "tags": ["search", "web"]
+        },
+        {
+            "id": 2,
+            "title": "Wikipedia",
+            "url": "https://www.wikipedia.org",
+            "description": "Free encyclopedia",
+            "tags": ["knowledge", "reference"]
+        },
+        {
+            "id": 3,
+            "title": "Stack Overflow",
+            "url": "https://stackoverflow.com",
+            "description": "Programming Q&A",
+            "tags": ["programming", "qa"]
+        }
+    ]
+}

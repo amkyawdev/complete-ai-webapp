@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logs - AmkyawDev AI</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #f8fafc;
+            padding: 2rem;
+        }
+        
+        .log-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .log-entry {
+            background: white;
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .log-entry.info {
+            border-left-color: #3b82f6;
+        }
+        
+        .log-entry.warning {
+            border-left-color: #f59e0b;
+        }
+        
+        .log-entry.error {
+            border-left-color: #ef4444;
+        }
+        
+        .log-entry.success {
+            border-left-color: #10b981;
+        }
+        
+        .log-time {
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+        
+        .log-message {
+            margin-top: 0.5rem;
+            color: #1e293b;
+        }
+    </style>
+</head>
+<body>
+    <div class="log-container" x-data="logsApp()">
+        <h1 class="title">
+            <i class="fas fa-history"></i> Logs
+        </h1>
+        
+        <div class="buttons mb-4">
+            <button class="button is-primary" @click="refreshLogs()">
+                <span class="icon"><i class="fas fa-sync-alt"></i></span>
+                <span>Refresh</span>
+            </button>
+            <button class="button is-danger" @click="clearLogs()">
+                <span class="icon"><i class="fas fa-trash"></i></span>
+                <span>Clear</span>
+            </button>
+            <button class="button is-info" @click="exportLogs()">
+                <span class="icon"><i class="fas fa-download"></i></span>
+                <span>Export</span>
+            </button>
+        </div>
+        
+        <template x-for="log in logs" :key="log.id">
+            <div class="log-entry" :class="log.level">
+                <span class="log-time" x-text="log.timestamp"></span>
+                <p class="log-message" x-text="log.message"></p>
+            </div>
+        </template>
+        
+        <div class="notification is-light" x-show="logs.length === 0">
+            No logs available
+        </div>
+    </div>
+    
+    <script src="logs.js"></script>
+</body>
+</html>

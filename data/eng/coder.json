@@ -1,0 +1,32 @@
+{
+    "codeSnippets": [
+        {
+            "id": 1,
+            "title": "Hello World - Python",
+            "code": "print('Hello, World!')",
+            "language": "python",
+            "description": "Basic Python hello world example"
+        },
+        {
+            "id": 2,
+            "title": "Hello World - JavaScript",
+            "code": "console.log('Hello, World!');",
+            "language": "javascript",
+            "description": "Basic JavaScript hello world example"
+        },
+        {
+            "id": 3,
+            "title": "Array Sorting - Python",
+            "code": "my_list = [3, 1, 4, 1, 5]\nmy_list.sort()\nprint(my_list)",
+            "language": "python",
+            "description": "Sort an array in Python"
+        },
+        {
+            "id": 4,
+            "title": "For Loop - JavaScript",
+            "code": "for (let i = 0; i < 5; i++) {\n  console.log(i);\n}",
+            "language": "javascript",
+            "description": "For loop example in JavaScript"
+        }
+    ]
+}

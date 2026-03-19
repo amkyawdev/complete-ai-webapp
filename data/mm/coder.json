@@ -1,0 +1,25 @@
+{
+    "codeSnippets": [
+        {
+            "id": 1,
+            "title": "Hello World - Python",
+            "code": "print('မင်္ဂလာပါ ကမ္ဘာလောကကြီး!')",
+            "language": "python",
+            "description": "Python ဖြင့်ပါဝင်ပါတယ်။"
+        },
+        {
+            "id": 2,
+            "title": "Hello World - JavaScript",
+            "code": "console.log('မင်္ဂလာပါ ကမ္ဘာလောကကြီး!');",
+            "language": "javascript",
+            "description": "JavaScript ဖြင့်ပါဝင်ပါတယ်။"
+        },
+        {
+            "id": 3,
+            "title": "Array ပြန်လည်စီရန် - Python",
+            "code": "my_list = [3, 1, 4, 1, 5]\nmy_list.sort()\nprint(my_list)",
+            "language": "python",
+            "description": "Array ကို စီရန်"
+        }
+    ]
+}

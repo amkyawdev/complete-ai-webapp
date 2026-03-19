@@ -1,0 +1,62 @@
+{
+    "questions": [
+        {
+            "id": 1,
+            "question": "AI ဆိုတာဘာလဲ။",
+            "answer": "Artificial Intelligence (AI) ဆိုတာ လူသားများရဲ့ စိတ်ကူးဉာဏ်ကို ကွန်ပျုတာများနဲ့ တုပပါတယ်။",
+            "category": "basic"
+        },
+        {
+            "id": 2,
+            "question": "Machine Learning ဆိုတာဘာလဲ။",
+            "answer": "Machine Learning ဆိုတာ ကွန်ပျုတာများကို ဒေတာများကနေ သင်ယူလို့ရတဲ့ နည်းလမ်းပါတယ်။",
+            "category": "basic"
+        },
+        {
+            "id": 3,
+            "question": "Neural Network ဆိုတာဘာလဲ။",
+            "answer": "Neural Network ဆိုတာ လူသားရဲ့ ဦးနှောက်အာရုံကြောများရဲ့ လုပ်ဆောင်ပုံကို တုပပါတယ်။",
+            "category": "advanced"
+        }
+    ],
+    "web-links": [
+        {
+            "id": 1,
+            "title": "Python ပါမောက္ခများ",
+            "url": "https://www.python.org/",
+            "description": "Python ပရိုဂရမ်းမင်းဘာသာစကားရဲ့ အမာတ်စိတ်ဝင်စားမှုများ",
+            "tags": ["python", "programming"]
+        },
+        {
+            "id": 2,
+            "title": "TensorFlow",
+            "url": "https://www.tensorflow.org/",
+            "description": "Machine Learning အတွက် ပါဝင်ပါတယ်။",
+            "tags": ["ml", "tensorflow"]
+        }
+    ],
+    "text": [
+        {
+            "id": 1,
+            "title": "AI ရဲ့ သမိုင်း",
+            "content": "Artificial Intelligence သမိုင်းသည် ၁၉၅၆ ခုနှစ်မှာ စတင်ခဲ့ပါတယ်။",
+            "category": "history"
+        }
+    ],
+    "image": [
+        {
+            "id": 1,
+            "title": "AI ပုံများ",
+            "url": "/data/mm/image1.jpg",
+            "description": "AI နည်းပညာပါဝင်ပါတယ်။"
+        }
+    ],
+    "code": [
+        {
+            "id": 1,
+            "title": "Hello World ပါမောက္ခများ",
+            "code": "print('Hello, World!')",
+            "language": "python"
+        }
+    ]
+}

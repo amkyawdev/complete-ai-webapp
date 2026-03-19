@@ -1,0 +1,16 @@
+{
+    "images": [
+        {
+            "id": 1,
+            "title": "AI Technology",
+            "url": "/data/eng/images/ai-tech.jpg",
+            "description": "Artificial Intelligence technology visualization"
+        },
+        {
+            "id": 2,
+            "title": "Programming",
+            "url": "/data/eng/images/programming.jpg",
+            "description": "Programming concept image"
+        }
+    ]
+}

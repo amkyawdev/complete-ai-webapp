@@ -1,0 +1,240 @@
+/* API Endpoint Tester Styles */
+
+/* ========================================
+   Endpoint Builder
+======================================== */
+.endpoint-builder {
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.endpoint-section {
+    border-top: 1px solid var(--light-dark);
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    transition: background var(--transition-fast);
+}
+
+.section-header:hover {
+    background: var(--light);
+}
+
+.section-header .icon {
+    color: var(--primary);
+    width: 20px;
+}
+
+.toggle-icon {
+    margin-left: auto;
+    color: var(--grey);
+    transition: transform var(--transition-fast);
+}
+
+.toggle-icon.is-active {
+    transform: rotate(180deg);
+}
+
+.section-content {
+    padding: 0 1.5rem 1.5rem;
+}
+
+/* Key-Value Rows */
+.key-value-row {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.key-value-row .input {
+    flex: 1;
+}
+
+/* ========================================
+   Response Section
+======================================== */
+.response-section {
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    margin-bottom: 2rem;
+    animation: fadeIn 0.3s ease;
+}
+
+.response-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: var(--light);
+    border-bottom: 1px solid var(--light-dark);
+}
+
+.response-title {
+    font-weight: 600;
+    color: var(--dark);
+}
+
+.response-time {
+    color: var(--grey);
+    font-size: 0.875rem;
+    margin-left: auto;
+}
+
+.response-body {
+    padding: 1.5rem;
+    margin: 0;
+    background: #1e293b;
+    color: #e2e8f0;
+    font-family: 'Fira Code', 'Consolas', monospace;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    overflow-x: auto;
+    max-height: 400px;
+    overflow-y: auto;
+    border-radius: 0;
+}
+
+/* Status Tags */
+.tag.is-success {
+    background: rgba(16, 185, 129, 0.15);
+    color: var(--success);
+}
+
+.tag.is-warning {
+    background: rgba(245, 158, 11, 0.15);
+    color: var(--warning);
+}
+
+.tag.is-danger {
+    background: rgba(239, 68, 68, 0.15);
+    color: var(--danger);
+}
+
+.tag.is-info {
+    background: rgba(59, 130, 246, 0.15);
+    color: var(--info);
+}
+
+/* Method Tags */
+.method-GET {
+    background: rgba(16, 185, 129, 0.15);
+    color: var(--success);
+}
+
+.method-POST {
+    background: rgba(59, 130, 246, 0.15);
+    color: var(--info);
+}
+
+.method-PUT {
+    background: rgba(245, 158, 11, 0.15);
+    color: var(--warning);
+}
+
+.method-DELETE {
+    background: rgba(239, 68, 68, 0.15);
+    color: var(--danger);
+}
+
+.method-PATCH {
+    background: rgba(139, 92, 246, 0.15);
+    color: #8b5cf6;
+}
+
+/* ========================================
+   Saved Endpoints
+======================================== */
+.saved-endpoints {
+    margin-top: 2rem;
+}
+
+.saved-endpoints .title {
+    margin-bottom: 1rem;
+}
+
+.saved-endpoint-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: white;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    position: relative;
+}
+
+.saved-endpoint-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.saved-endpoint-card .delete {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+}
+
+.saved-endpoint-card:hover .delete {
+    opacity: 1;
+}
+
+.endpoint-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.endpoint-name {
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 0.25rem;
+}
+
+.endpoint-url {
+    font-size: 0.8rem;
+    color: var(--grey);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ========================================
+   Responsive
+======================================== */
+@media screen and (max-width: 768px) {
+    .endpoint-builder .columns {
+        flex-direction: column;
+    }
+    
+    .endpoint-builder .column {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+    
+    .key-value-row {
+        flex-direction: column;
+    }
+    
+    .response-header {
+        flex-wrap: wrap;
+    }
+    
+    .response-time {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 0.5rem;
+    }
+}

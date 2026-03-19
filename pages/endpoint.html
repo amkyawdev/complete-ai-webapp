@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Tester - AmkyawDev AI</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/api-endpoint.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body x-data="endpointPage()" x-init="init()" :class="{'is-clipped': isMenuOpen}">
+    
+    <!-- Desktop Sidebar -->
+    <aside class="sidebar is-desktop" :class="{'is-active': isMenuOpen}">
+        <div class="sidebar-header">
+            <p class="title is-4 has-text-white">
+                <i class="fas fa-robot"></i> AmkyawDev
+            </p>
+            <p class="subtitle is-6 has-text-grey-light">AI WebApp</p>
+        </div>
+        
+        <nav class="sidebar-menu">
+            <a href="../index.html" class="sidebar-item" :class="{'is-active': currentPage === 'home'}">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="chat.html" class="sidebar-item" :class="{'is-active': currentPage === 'chat'}">
+                <i class="fas fa-comments"></i>
+                <span>Chat</span>
+            </a>
+            <a href="endpoint.html" class="sidebar-item" :class="{'is-active': currentPage === 'endpoint'}">
+                <i class="fas fa-plug"></i>
+                <span>API Tester</span>
+            </a>
+            <a href="dashboard.html" class="sidebar-item" :class="{'is-active': currentPage === 'dashboard'}">
+                <i class="fas fa-chart-line"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="collections.html" class="sidebar-item" :class="{'is-active': currentPage === 'collections'}">
+                <i class="fas fa-folder"></i>
+                <span>Collections</span>
+            </a>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <div class="language-switcher">
+                <button class="button is-small" :class="lang === 'mm' ? 'is-primary' : 'is-dark'" @click="setLang('mm')">🇲🇲 မြန်မာ</button>
+                <button class="button is-small" :class="lang === 'eng' ? 'is-primary' : 'is-dark'" @click="setLang('eng')">🇬🇧 English</button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Mobile Header -->
+    <header class="mobile-header is-hidden-desktop">
+        <button class="hamburger-btn" @click="toggleMenu()" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <p class="title is-5">
+            <i class="fas fa-plug"></i> API
+        </p>
+        <button class="button is-small is-white is-rounded" @click="showOptions = true">
+            <i class="fas fa-ellipsis-v"></i>
+        </button>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-overlay is-hidden-desktop" :class="{'is-active': isMenuOpen}" @click="closeMenu()"></div>
+
+    <!-- Mobile Menu -->
+    <nav class="mobile-menu is-hidden-desktop" :class="{'is-open': isMenuOpen}">
+        <div class="mobile-menu-header">
+            <p class="title is-4 has-text-white">
+                <i class="fas fa-robot"></i> AmkyawDev
+            </p>
+            <button class="close-btn" @click="closeMenu()" aria-label="Close menu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="mobile-menu-items">
+            <a href="../index.html" class="mobile-menu-item" @click="closeMenu()">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="chat.html" class="mobile-menu-item" @click="closeMenu()">
+                <i class="fas fa-comments"></i>
+                <span>Chat</span>
+            </a>
+            <a href="endpoint.html" class="mobile-menu-item" @click="closeMenu()">
+                <i class="fas fa-plug"></i>
+                <span>API Tester</span>
+            </a>
+            <a href="dashboard.html" class="mobile-menu-item" @click="closeMenu()">
+                <i class="fas fa-chart-line"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="collections.html" class="mobile-menu-item" @click="closeMenu()">
+                <i class="fas fa-folder"></i>
+                <span>Collections</span>
+            </a>
+        </div>
+        
+        <div class="mobile-menu-footer">
+            <div class="language-switcher">
+                <button class="button is-small" :class="lang === 'mm' ? 'is-primary' : 'is-dark'" @click="setLang('mm')">🇲ဲ မြန်မာ</button>
+                <button class="button is-small" :class="lang === 'eng' ? 'is-primary' : 'is-dark'" @click="setLang('eng')">🇬🇧 English</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content" :class="{'with-sidebar': !isMobile()}">
+        <div class="container">
+            <section class="section">
+                <h1 class="title is-3">
+                    <i class="fas fa-plug"></i> 
+                    <span x-text="getLabel('apiTester')"></span>
+                </h1>
+                
+                <!-- Request Builder -->
+                <div class="endpoint-builder">
+                    <div class="columns">
+                        <div class="column is-2">
+                            <div class="select is-fullwidth">
+                                <select x-model="method">
+                                    <option value="GET">GET</option>
+                                    <option value="POST">POST</option>
+                                    <option value="PUT">PUT</option>
+                                    <option value="DELETE">DELETE</option>
+                                    <option value="PATCH">PATCH</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="column is-8">
+                            <input type="text" class="input" :placeholder="getLabel('urlPlaceholder')" x-model="url">
+                        </div>
+                        <div class="column is-2">
+                            <button class="button is-primary is-fullwidth" @click="sendRequest()" :class="{'is-loading': isLoading}">
+                                <span x-text="getLabel('send')"></span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Headers -->
+                    <div class="endpoint-section">
+                        <div class="section-header" @click="showHeaders = !showHeaders">
+                            <span class="icon"><i class="fas fa-code"></i></span>
+                            <span x-text="getLabel('headers')"></span>
+                            <span class="toggle-icon" :class="{'is-active': showHeaders}">
+                                <i class="fas fa-chevron-down"></i>
+                            </span>
+                        </div>
+                        <div class="section-content" x-show="showHeaders" x-transition>
+                            <template x-for="(header, index) in headers" :key="index">
+                                <div class="key-value-row">
+                                    <input type="text" class="input" :placeholder="getLabel('key')" x-model="header.key">
+                                    <input type="text" class="input" :placeholder="getLabel('value')" x-model="header.value">
+                                    <button class="button is-danger is-small" @click="removeHeader(index)">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </template>
+                            <button class="button is-small is-light" @click="addHeader()">
+                                <i class="fas fa-plus"></i>
+                                <span x-text="getLabel('addHeader')"></span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Body -->
+                    <div class="endpoint-section" x-show="method !== 'GET'">
+                        <div class="section-header" @click="showBody = !showBody">
+                            <span class="icon"><i class="fas fa-code-branch"></i></span>
+                            <span x-text="getLabel('body')"></span>
+                            <span class="toggle-icon" :class="{'is-active': showBody}">
+                                <i class="fas fa-chevron-down"></i>
+                            </span>
+                        </div>
+                        <div class="section-content" x-show="showBody" x-transition>
+                            <textarea class="textarea" :placeholder="getLabel('bodyPlaceholder')" x-model="requestBody" rows="8"></textarea>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Response -->
+                <div class="response-section" x-show="response" x-transition>
+                    <div class="response-header">
+                        <span class="response-title" x-text="getLabel('response')"></span>
+                        <span class="tag" :class="responseStatusClass" x-text="responseStatus"></span>
+                        <span class="response-time" x-text="responseTime + 'ms'"></span>
+                        <button class="button is-small is-light" @click="copyResponse()">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                    <pre class="response-body"><code x-text="response"></code></pre>
+                </div>
+                
+                <!-- Saved Endpoints -->
+                <div class="saved-endpoints">
+                    <h2 class="title is-5" x-text="getLabel('savedEndpoints')"></h2>
+                    <div class="columns is-multiline">
+                        <template x-for="endpoint in savedEndpoints" :key="endpoint.id">
+                            <div class="column is-6">
+                                <div class="saved-endpoint-card" @click="loadEndpoint(endpoint)">
+                                    <div class="endpoint-method">
+                                        <span class="tag" :class="'is-' + methodClass(endpoint.method)" x-text="endpoint.method"></span>
+                                    </div>
+                                    <div class="endpoint-info">
+                                        <p class="endpoint-name" x-text="endpoint.name"></p>
+                                        <p class="endpoint-url" x-text="endpoint.url"></p>
+                                    </div>
+                                    <button class="delete" @click.stop="deleteEndpoint(endpoint.id)"></button>
+                                </div>
+                            </div>
+                        </template>
+                        <div class="column is-6">
+                            <button class="button is-light is-fullwidth" @click="showSaveDialog = true">
+                                <i class="fas fa-plus"></i>
+                                <span x-text="getLabel('saveEndpoint')"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Options Dialog -->
+    <div class="dialog-overlay" :class="{'is-active': showOptions}" @click.self="showOptions = false">
+        <div class="dialog-box options-dialog" role="dialog" aria-modal="true">
+            <header class="dialog-header">
+                <p class="title is-5" x-text="getLabel('options')"></p>
+                <button class="delete" aria-label="close" @click="showOptions = false"></button>
+            </header>
+            <div class="dialog-content">
+                <div class="options-list">
+                    <button class="option-item" @click="clearAll()">
+                        <i class="fas fa-eraser"></i>
+                        <span x-text="getLabel('clearAll')"></span>
+                    </button>
+                    <button class="option-item" @click="showSettingsDialog()">
+                        <i class="fas fa-cog"></i>
+                        <span x-text="getLabel('settings')"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Save Endpoint Dialog -->
+    <div class="dialog-overlay" :class="{'is-active': showSaveDialog}" @click.self="showSaveDialog = false">
+        <div class="dialog-box" role="dialog" aria-modal="true">
+            <header class="dialog-header">
+                <p class="title is-5" x-text="getLabel('saveEndpoint')"></p>
+                <button class="delete" aria-label="close" @click="showSaveDialog = false"></button>
+            </header>
+            <div class="dialog-content">
+                <div class="field">
+                    <label class="label" x-text="getLabel('name')"></label>
+                    <input type="text" class="input" x-model="newEndpointName">
+                </div>
+            </div>
+            <footer class="dialog-footer">
+                <button class="button" @click="showSaveDialog = false" x-text="getLabel('cancel')"></button>
+                <button class="button is-primary" @click="saveEndpoint()" x-text="getLabel('save')"></button>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Settings Dialog -->
+    <div class="dialog-overlay" :class="{'is-active': showSettings}" @click.self="showSettings = false">
+        <div class="dialog-box" role="dialog" aria-modal="true">
+            <header class="dialog-header">
+                <p class="title is-5" x-text="getLabel('settings')"></p>
+                <button class="delete" aria-label="close" @click="showSettings = false"></button>
+            </header>
+            <div class="dialog-content">
+                <div class="field">
+                    <label class="label" x-text="getLabel('language')"></label>
+                    <div class="control">
+                        <div class="select is-fullwidth">
+                            <select x-model="lang" @change="saveSettings()">
+                                <option value="mm">🇲🇲 မြန်မာ</option>
+                                <option value="eng">🇬🇧 English</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="dialog-footer">
+                <button class="button is-primary" @click="showSettings = false" x-text="getLabel('close')"></button>
+            </footer>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/api-endpoint.js"></script>
+</body>
+</html>

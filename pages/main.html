@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - AmkyawDev AI</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/chat.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body x-data="mainPage()" x-init="init()" :class="{'is-clipped': isMenuOpen}">
+    
+    <!-- Desktop Sidebar -->
+    <aside class="sidebar is-desktop" :class="{'is-active': isMenuOpen}">
+        <div class="sidebar-header">
+            <p class="title is-4 has-text-white">
+                <i class="fas fa-robot"></i> AmkyawDev
+            </p>
+            <p class="subtitle is-6 has-text-grey-light">AI WebApp</p>
+        </div>
+        
+        <nav class="sidebar-menu">
+            <a href="../index.html" class="sidebar-item" :class="{'is-active': currentPage === 'home'}">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="chat.html" class="sidebar-item" :class="{'is-active': currentPage === 'chat'}">
+                <i class="fas fa-comments"></i>
+                <span>Chat</span>
+            </a>
+            <a href="endpoint.html" class="sidebar-item" :class="{'is-active': currentPage === 'endpoint'}">
+                <i class="fas fa-plug"></i>
+                <span>API Tester</span>
+            </a>
+            <a href="dashboard.html" class="sidebar-item" :class="{'is-active': currentPage === 'dashboard'}">
+                <i class="fas fa-chart-line"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="collections.html" class="sidebar-item" :class="{'is-active': currentPage === 'collections'}">
+                <i class="fas fa-folder"></i>
+                <span>Collections</span>
+            </a>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <div class="language-switcher">
+                <button class="button is-small" :class="lang === 'mm' ? 'is-primary' : 'is-dark'" @click="setLang('mm')">🇲🇲 မြန်မာ</button>
+                <button class="button is-small" :class="lang === 'eng' ? 'is-primary' : 'is-dark'" @click="setLang('eng')">🇬🇧 English</button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Mobile Header -->
+    <header class="mobile-header is-hidden-desktop">
+        <button class="hamburger-btn" @click="toggleMenu()" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <p class="title is-5">
+            <i class="fas fa-robot"></i> AmkyawDev
+        </p>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-overlay is-hidden-desktop" :class="{'is-active': isMenuOpen}" @click="closeMenu()"></div>
+
+    <!-- Mobile Menu -->
+    <nav class="mobile-menu is-hidden-desktop" :class="{'is-open': isMenuOpen}">
+        <div class="mobile-menu-header">
+            <p class="title is-4 has-text-white">
+                <i class="fas fa-robot"></i> AmkyawDev
+            </p>
+            <button class="close-btn" @click="closeMenu()" aria-label="Close menu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="mobile-menu-items">
+            <a href="../index.html" class="mobile-menu-item" @click="closeMenu()">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="chat.html" class="mobile-menu-item" @click="closeMenu()">
+                <i class="fas fa-comments"></i>
+                <span>Chat</span>
+            </a>
+            <a href="endpoint.html" class="mobile-menu-item" @click="closeMenu()">
+                <i class="fas fa-plug"></i>
+                <span>API Tester</span>
+            </a>
+            <a href="dashboard.html" class="mobile-menu-item" @click="closeMenu()">
+                <i class="fas fa-chart-line"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="collections.html" class="mobile-menu-item" @click="closeMenu()">
+                <i class="fas fa-folder"></i>
+                <span>Collections</span>
+            </a>
+        </div>
+        
+        <div class="mobile-menu-footer">
+            <div class="language-switcher">
+                <button class="button is-small" :class="lang === 'mm' ? 'is-primary' : 'is-dark'" @click="setLang('mm')">🇲ဲ မြန်မာ</button>
+                <button class="button is-small" :class="lang === 'eng' ? 'is-primary' : 'is-dark'" @click="setLang('eng')">🇬🇧 English</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content" :class="{'with-sidebar': !isMobile()}">
+        <div class="container">
+            <!-- Search Section -->
+            <section class="section">
+                <div class="search-container">
+                    <div class="search-wrapper">
+                        <i class="fas fa-search search-icon"></i>
+                        <input 
+                            type="text" 
+                            class="search-input" 
+                            :placeholder="getLabel('searchPlaceholder')"
+                            x-model="searchQuery"
+                            @keyup.enter="performSearch()"
+                        >
+                        <button class="search-button" @click="performSearch()">
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Actions -->
+            <section class="section pt-0">
+                <div class="columns is-multiline">
+                    <template x-for="action in quickActions" :key="action.id">
+                        <div class="column is-3-desktop is-6-tablet">
+                            <div class="quick-action-card" @click="openAction(action.id)">
+                                <div class="action-icon">
+                                    <i :class="action.icon"></i>
+                                </div>
+                                <p class="action-title" x-text="action.title"></p>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </section>
+
+            <!-- Recent Activity -->
+            <section class="section pt-0">
+                <h2 class="title is-4" x-text="getLabel('recentActivity')"></h2>
+                <div class="activity-list">
+                    <template x-for="activity in recentActivities" :key="activity.id">
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i :class="activity.icon"></i>
+                            </div>
+                            <div class="activity-content">
+                                <p class="activity-title" x-text="activity.title"></p>
+                                <p class="activity-time" x-text="activity.time"></p>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Settings Dialog -->
+    <div class="dialog-overlay" :class="{'is-active': showSettings}" @click.self="showSettings = false">
+        <div class="dialog-box" role="dialog" aria-modal="true">
+            <header class="dialog-header">
+                <p class="title is-5" x-text="getLabel('settings')"></p>
+                <button class="delete" aria-label="close" @click="showSettings = false"></button>
+            </header>
+            <div class="dialog-content">
+                <div class="field">
+                    <label class="label" x-text="getLabel('language')"></label>
+                    <div class="control">
+                        <div class="select is-fullwidth">
+                            <select x-model="lang" @change="saveSettings()">
+                                <option value="mm">🇲🇲 မြန်မာ</option>
+                                <option value="eng">🇬🇧 English</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label" x-text="getLabel('theme')"></label>
+                    <div class="control">
+                        <div class="select is-fullwidth">
+                            <select x-model="theme" @change="saveSettings()">
+                                <option value="light">Light</option>
+                                <option value="dark">Dark</option>
+                                <option value="auto">Auto</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="dialog-footer">
+                <button class="button is-primary" @click="showSettings = false" x-text="getLabel('close')"></button>
+            </footer>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/chat.js"></script>
+</body>
+</html>
