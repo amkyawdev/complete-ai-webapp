@@ -14,22 +14,202 @@
         },
         {
             "id": 3,
+            "input": "hey",
+            "output": "Hey! How are you doing?",
+            "category": "greeting"
+        },
+        {
+            "id": 4,
             "input": "good morning",
-            "output": "Good morning! How are you today?",
+            "output": "Good morning! How can I assist you?",
+            "category": "greeting"
+        },
+        {
+            "id": 5,
+            "input": "good afternoon",
+            "output": "Good afternoon! What can I help you with?",
+            "category": "greeting"
+        },
+        {
+            "id": 6,
+            "input": "good evening",
+            "output": "Good evening! How may I help you?",
+            "category": "greeting"
+        },
+        {
+            "id": 7,
+            "input": "good night",
+            "output": "Good night! Sleep well!",
+            "category": "greeting"
+        },
+        {
+            "id": 8,
+            "input": "howdy",
+            "output": "Howdy! What can I do for you?",
+            "category": "greeting"
+        },
+        {
+            "id": 9,
+            "input": "what's up",
+            "output": "Not much! How can I help you?",
+            "category": "greeting"
+        },
+        {
+            "id": 10,
+            "input": "yo",
+            "output": "Yo! What's on your mind?",
+            "category": "greeting"
+        },
+        {
+            "id": 11,
+            "input": "greetings",
+            "output": "Greetings! How may I assist you?",
+            "category": "greeting"
+        },
+        {
+            "id": 12,
+            "input": "namaste",
+            "output": "Namaste! How can I help you?",
+            "category": "greeting"
+        },
+        {
+            "id": 13,
+            "input": "hola",
+            "output": "Hola! What can I do for you?",
+            "category": "greeting"
+        },
+        {
+            "id": 14,
+            "input": "ciao",
+            "output": "Ciao! How can I assist you?",
+            "category": "greeting"
+        },
+        {
+            "id": 15,
+            "input": "welcome",
+            "output": "Welcome! How can I help you today?",
             "category": "greeting"
         }
     ],
     "questions": [
         {
             "id": 1,
-            "input": "what are you",
-            "output": "I'm an AI assistant designed to help you with various tasks.",
+            "input": "what is ai",
+            "output": "AI stands for Artificial Intelligence. It's a field of computer science focused on creating intelligent machines.",
             "category": "question"
         },
         {
             "id": 2,
-            "input": "how are you",
-            "output": "I'm doing great! Thank you for asking. How can I assist you?",
+            "input": "what is machine learning",
+            "output": "Machine Learning is a subset of AI that enables computers to learn from data without being explicitly programmed.",
+            "category": "question"
+        },
+        {
+            "id": 3,
+            "input": "what is python",
+            "output": "Python is a high-level programming language known for its simplicity and readability.",
+            "category": "question"
+        },
+        {
+            "id": 4,
+            "input": "what is javascript",
+            "output": "JavaScript is a programming language primarily used for web development to create interactive websites.",
+            "category": "question"
+        },
+        {
+            "id": 5,
+            "input": "what is html",
+            "output": "HTML stands for HyperText Markup Language. It's the standard markup language for creating web pages.",
+            "category": "question"
+        },
+        {
+            "id": 6,
+            "input": "what is css",
+            "output": "CSS stands for Cascading Style Sheets. It's used to style and layout web pages.",
+            "category": "question"
+        },
+        {
+            "id": 7,
+            "input": "what is react",
+            "output": "React is a JavaScript library for building user interfaces, developed by Facebook.",
+            "category": "question"
+        },
+        {
+            "id": 8,
+            "input": "what is nodejs",
+            "output": "Node.js is a JavaScript runtime built on Chrome's V8 engine, used for server-side programming.",
+            "category": "question"
+        },
+        {
+            "id": 9,
+            "input": "what is database",
+            "output": "A database is an organized collection of structured data stored electronically.",
+            "category": "question"
+        },
+        {
+            "id": 10,
+            "input": "what is api",
+            "output": "API stands for Application Programming Interface. It allows different software applications to communicate.",
+            "category": "question"
+        },
+        {
+            "id": 11,
+            "input": "what is cloud computing",
+            "output": "Cloud computing is the delivery of computing services over the internet.",
+            "category": "question"
+        },
+        {
+            "id": 12,
+            "input": "what is docker",
+            "output": "Docker is a platform for developing, shipping, and running applications in containers.",
+            "category": "question"
+        },
+        {
+            "id": 13,
+            "input": "what is kubernetes",
+            "output": "Kubernetes is an open-source container orchestration platform for automating deployment.",
+            "category": "question"
+        },
+        {
+            "id": 14,
+            "input": "what is git",
+            "output": "Git is a distributed version control system for tracking changes in source code.",
+            "category": "question"
+        },
+        {
+            "id": 15,
+            "input": "what is github",
+            "output": "GitHub is a cloud-based platform for version control and collaboration.",
+            "category": "question"
+        },
+        {
+            "id": 16,
+            "input": "what is sql",
+            "output": "SQL stands for Structured Query Language. It's used to manage relational databases.",
+            "category": "question"
+        },
+        {
+            "id": 17,
+            "input": "what is mongodb",
+            "output": "MongoDB is a NoSQL document database known for flexibility and scalability.",
+            "category": "question"
+        },
+        {
+            "id": 18,
+            "input": "what is aws",
+            "output": "AWS stands for Amazon Web Services, a comprehensive cloud computing platform.",
+            "category": "question"
+        },
+        {
+            "id": 19,
+            "input": "what is vuejs",
+            "output": "Vue.js is a progressive JavaScript framework for building user interfaces.",
+            "category": "question"
+        },
+        {
+            "id": 20,
+            "input": "what is angular",
+            "output": "Angular is a TypeScript-based web application framework developed by Google.",
             "category": "question"
         }
     ],
@@ -43,7 +223,85 @@
         {
             "id": 2,
             "input": "help",
-            "output": "I can help you with: chat, search, information, and more. Just ask!",
+            "output": "I can help you with programming, general questions, and more. Just ask!",
+            "category": "command"
+        },
+        {
+            "id": 3,
+            "input": "stop",
+            "output": "Understood. Let me know if you need anything else.",
+            "category": "command"
+        },
+        {
+            "id": 4,
+            "input": "restart",
+            "output": "Starting fresh! How can I help you?",
+            "category": "command"
+        },
+        {
+            "id": 5,
+            "input": "repeat",
+            "output": "Could you please repeat that?",
+            "category": "command"
+        },
+        {
+            "id": 6,
+            "input": "translate",
+            "output": "I can help translate between languages. Which language do you need?",
+            "category": "command"
+        },
+        {
+            "id": 7,
+            "input": "explain",
+            "output": "I'll explain it to you. What would you like to know?",
+            "category": "command"
+        },
+        {
+            "id": 8,
+            "input": "code",
+            "output": "I can write code for you. What programming language?",
+            "category": "command"
+        },
+        {
+            "id": 9,
+            "input": "search",
+            "output": "I can help you search for information. What are you looking for?",
+            "category": "command"
+        },
+        {
+            "id": 10,
+            "input": "save",
+            "output": "What would you like me to save?",
+            "category": "command"
+        },
+        {
+            "id": 11,
+            "input": "delete",
+            "output": "What would you like me to delete?",
+            "category": "command"
+        },
+        {
+            "id": 12,
+            "input": "update",
+            "output": "What would you like to update?",
+            "category": "command"
+        },
+        {
+            "id": 13,
+            "input": "show",
+            "output": "What would you like me to show you?",
+            "category": "command"
+        },
+        {
+            "id": 14,
+            "input": "hide",
+            "output": "What would you like me to hide?",
+            "category": "command"
+        },
+        {
+            "id": 15,
+            "input": "run",
+            "output": "I can help you run code. Please provide the code.",
             "category": "command"
         }
     ],
@@ -53,6 +311,368 @@
             "input": "thank you",
             "output": "You're welcome! Happy to help!",
             "category": "general"
+        },
+        {
+            "id": 2,
+            "input": "thanks",
+            "output": "No problem! Anything else?",
+            "category": "general"
+        },
+        {
+            "id": 3,
+            "input": "okay",
+            "output": "Got it! What else can I do for you?",
+            "category": "general"
+        },
+        {
+            "id": 4,
+            "input": "sure",
+            "output": "Great! What's next?",
+            "category": "general"
+        },
+        {
+            "id": 5,
+            "input": "yes",
+            "output": "Perfect! What would you like to know?",
+            "category": "general"
+        },
+        {
+            "id": 6,
+            "input": "no",
+            "output": "No problem! Is there something else?",
+            "category": "general"
+        },
+        {
+            "id": 7,
+            "input": "maybe",
+            "output": "Take your time! Let me know when you're ready.",
+            "category": "general"
+        },
+        {
+            "id": 8,
+            "input": "sorry",
+            "output": "No worries! How can I help?",
+            "category": "general"
+        },
+        {
+            "id": 9,
+            "input": "please",
+            "output": "Of course! What do you need?",
+            "category": "general"
+        },
+        {
+            "id": 10,
+            "input": "great",
+            "output": "Awesome! What's next?",
+            "category": "general"
+        },
+        {
+            "id": 11,
+            "input": "cool",
+            "output": "Indeed! What else?",
+            "category": "general"
+        },
+        {
+            "id": 12,
+            "input": "nice",
+            "output": "Thanks! Anything else?",
+            "category": "general"
+        },
+        {
+            "id": 13,
+            "input": "awesome",
+            "output": "Glad you think so! What's next?",
+            "category": "general"
+        },
+        {
+            "id": 14,
+            "input": "amazing",
+            "output": "Thank you! What else can I help with?",
+            "category": "general"
+        },
+        {
+            "id": 15,
+            "input": "good",
+            "output": "Happy to hear that! What's next?",
+            "category": "general"
+        },
+        {
+            "id": 16,
+            "input": "bad",
+            "output": "I'm sorry to hear that. How can I help improve things?",
+            "category": "general"
+        },
+        {
+            "id": 17,
+            "input": "okay then",
+            "output": "Alright! What would you like to do?",
+            "category": "general"
+        },
+        {
+            "id": 18,
+            "input": "i see",
+            "output": "Got it! Anything else?",
+            "category": "general"
+        },
+        {
+            "id": 19,
+            "input": "interesting",
+            "output": "Glad you find it interesting! What else would you like to know?",
+            "category": "general"
+        },
+        {
+            "id": 20,
+            "input": "wow",
+            "output": "Impressive, right? What else can I tell you?",
+            "category": "general"
+        }
+    ],
+    "programming": [
+        {
+            "id": 1,
+            "input": "javascript tutorial",
+            "output": "Here's a simple JavaScript tutorial: Variables are declared with let, const, or var.",
+            "category": "programming"
+        },
+        {
+            "id": 2,
+            "input": "python tutorial",
+            "output": "Python is great for beginners. Start with variables and basic data types.",
+            "category": "programming"
+        },
+        {
+            "id": 3,
+            "input": "html tutorial",
+            "output": "HTML uses tags like <html>, <head>, <body>, and <p> for paragraphs.",
+            "category": "programming"
+        },
+        {
+            "id": 4,
+            "input": "css tutorial",
+            "output": "CSS is used for styling. You can use selectors, properties, and values.",
+            "category": "programming"
+        },
+        {
+            "id": 5,
+            "input": "react tutorial",
+            "output": "React uses components. A simple component returns JSX.",
+            "category": "programming"
+        },
+        {
+            "id": 6,
+            "input": "nodejs tutorial",
+            "output": "Node.js lets you run JavaScript on the server. Start with npm and Express.",
+            "category": "programming"
+        },
+        {
+            "id": 7,
+            "input": "write code",
+            "output": "I can write code for you. What language and what do you need?",
+            "category": "programming"
+        },
+        {
+            "id": 8,
+            "input": "debug code",
+            "output": "Share your code and I'll help you debug it.",
+            "category": "programming"
+        },
+        {
+            "id": 9,
+            "input": "explain code",
+            "output": "Paste your code here and I'll explain what it does.",
+            "category": "programming"
+        },
+        {
+            "id": 10,
+            "input": "best practices",
+            "output": "Best practices include: clean code, proper naming, comments, and testing.",
+            "category": "programming"
+        }
+    ],
+    "technology": [
+        {
+            "id": 1,
+            "input": "buy phone",
+            "output": "There are many great phones available. What's your budget?",
+            "category": "technology"
+        },
+        {
+            "id": 2,
+            "input": "buy laptop",
+            "output": "Laptops vary by purpose. Do you need it for work, gaming, or general use?",
+            "category": "technology"
+        },
+        {
+            "id": 3,
+            "input": "internet slow",
+            "output": "Try restarting your router or contact your ISP.",
+            "category": "technology"
+        },
+        {
+            "id": 4,
+            "input": "wifi not working",
+            "output": "Check if WiFi is enabled and try resetting your router.",
+            "category": "technology"
+        },
+        {
+            "id": 5,
+            "input": "battery drain",
+            "output": "Close unused apps and reduce screen brightness to save battery.",
+            "category": "technology"
+        },
+        {
+            "id": 6,
+            "input": "storage full",
+            "output": "Delete unused apps and files, or consider upgrading storage.",
+            "category": "technology"
+        },
+        {
+            "id": 7,
+            "input": "update software",
+            "output": "Always keep your software updated for security and new features.",
+            "category": "technology"
+        },
+        {
+            "id": 8,
+            "input": "antivirus",
+            "output": "Use trusted antivirus software and keep it updated.",
+            "category": "technology"
+        },
+        {
+            "id": 9,
+            "input": "backup data",
+            "output": "Regularly backup important files to cloud or external storage.",
+            "category": "technology"
+        },
+        {
+            "id": 10,
+            "input": "password reset",
+            "output": "Most services have a 'forgot password' option on the login page.",
+            "category": "technology"
+        }
+    ],
+    "daily_life": [
+        {
+            "id": 1,
+            "input": "cooking recipe",
+            "output": "What kind of food would you like to cook?",
+            "category": "daily_life"
+        },
+        {
+            "id": 2,
+            "input": "exercise tips",
+            "output": "Regular exercise includes cardio, strength training, and stretching.",
+            "category": "daily_life"
+        },
+        {
+            "id": 3,
+            "input": "study tips",
+            "output": "Good study habits include: regular breaks, active recall, and practice.",
+            "category": "daily_life"
+        },
+        {
+            "id": 4,
+            "input": "sleep better",
+            "output": "Avoid screens before bed and maintain a consistent sleep schedule.",
+            "category": "daily_life"
+        },
+        {
+            "id": 5,
+            "input": "time management",
+            "output": "Use a planner or apps to organize your tasks and priorities.",
+            "category": "daily_life"
+        },
+        {
+            "id": 6,
+            "input": "productivity",
+            "output": "Focus on one task at a time and take regular breaks.",
+            "category": "daily_life"
+        },
+        {
+            "id": 7,
+            "input": "healthy eating",
+            "output": "Eat balanced meals with vegetables, fruits, and protein.",
+            "category": "daily_life"
+        },
+        {
+            "id": 8,
+            "input": "stress relief",
+            "output": "Try meditation, exercise, or talking to someone you trust.",
+            "category": "daily_life"
+        },
+        {
+            "id": 9,
+            "input": "travel tips",
+            "output": "Research your destination, pack light, and keep documents safe.",
+            "category": "daily_life"
+        },
+        {
+            "id": 10,
+            "input": "saving money",
+            "output": "Track expenses, set budgets, and save a portion of income.",
+            "category": "daily_life"
+        }
+    ],
+    "education": [
+        {
+            "id": 1,
+            "input": "learn programming",
+            "output": "Start with Python or JavaScript. Practice regularly!",
+            "category": "education"
+        },
+        {
+            "id": 2,
+            "input": "learn english",
+            "output": "Practice daily with reading, listening, and speaking.",
+            "category": "education"
+        },
+        {
+            "id": 3,
+            "input": "math help",
+            "output": "What specific math topic do you need help with?",
+            "category": "education"
+        },
+        {
+            "id": 4,
+            "input": "science experiments",
+            "output": "What science topic interests you?",
+            "category": "education"
+        },
+        {
+            "id": 5,
+            "input": "history facts",
+            "output": "What period of history would you like to learn about?",
+            "category": "education"
+        },
+        {
+            "id": 6,
+            "input": "geography",
+            "output": "What would you like to know about geography?",
+            "category": "education"
+        },
+        {
+            "id": 7,
+            "input": "homework help",
+            "output": "What subject and topic do you need help with?",
+            "category": "education"
+        },
+        {
+            "id": 8,
+            "input": "exam prep",
+            "output": "Start early, review notes, and practice past papers.",
+            "category": "education"
+        },
+        {
+            "id": 9,
+            "input": "online courses",
+            "output": "Popular platforms include Coursera, Udemy, and edX.",
+            "category": "education"
+        },
+        {
+            "id": 10,
+            "input": "career advice",
+            "output": "What career field are you interested in?",
+            "category": "education"
         }
     ]
 }

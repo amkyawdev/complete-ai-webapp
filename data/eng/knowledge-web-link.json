@@ -1,32 +1,578 @@
 {
-    "links": [
+    "educational": [
         {
             "id": 1,
             "title": "Wikipedia",
             "url": "https://www.wikipedia.org",
             "description": "Free encyclopedia",
-            "category": "knowledge"
+            "category": "educational"
         },
         {
             "id": 2,
+            "title": "Khan Academy",
+            "url": "https://www.khanacademy.org",
+            "description": "Free online courses",
+            "category": "educational"
+        },
+        {
+            "id": 3,
+            "title": "Coursera",
+            "url": "https://www.coursera.org",
+            "description": "Online courses",
+            "category": "educational"
+        },
+        {
+            "id": 4,
+            "title": "edX",
+            "url": "https://www.edx.org",
+            "description": "Online courses from universities",
+            "category": "educational"
+        },
+        {
+            "id": 5,
+            "title": "Khan Academy",
+            "url": "https://www.khanacademy.org",
+            "description": "Free education for all",
+            "category": "educational"
+        },
+        {
+            "id": 6,
+            "title": "Britannica",
+            "url": "https://www.britannica.com",
+            "description": "Encyclopedia",
+            "category": "educational"
+        },
+        {
+            "id": 7,
+            "title": "National Geographic",
+            "url": "https://www.nationalgeographic.com",
+            "description": "Science and nature",
+            "category": "educational"
+        },
+        {
+            "id": 8,
+            "title": "NASA",
+            "url": "https://www.nasa.gov",
+            "description": "Space exploration",
+            "category": "educational"
+        },
+        {
+            "id": 9,
+            "title": "Smithsonian",
+            "url": "https://www.smithsonianmag.com",
+            "description": "History and culture",
+            "category": "educational"
+        },
+        {
+            "id": 10,
+            "title": "TED-Ed",
+            "url": "https://ed.ted.com",
+            "description": "Educational videos",
+            "category": "educational"
+        }
+    ],
+    "news": [
+        {
+            "id": 1,
+            "title": "BBC News",
+            "url": "https://www.bbc.com/news",
+            "description": "World news",
+            "category": "news"
+        },
+        {
+            "id": 2,
+            "title": "CNN",
+            "url": "https://www.cnn.com",
+            "description": "Breaking news",
+            "category": "news"
+        },
+        {
+            "id": 3,
+            "title": "Reuters",
+            "url": "https://www.reuters.com",
+            "description": "World news",
+            "category": "news"
+        },
+        {
+            "id": 4,
+            "title": "The New York Times",
+            "url": "https://www.nytimes.com",
+            "description": "US news",
+            "category": "news"
+        },
+        {
+            "id": 5,
+            "title": "The Guardian",
+            "url": "https://www.theguardian.com",
+            "description": "UK news",
+            "category": "news"
+        },
+        {
+            "id": 6,
+            "title": "Al Jazeera",
+            "url": "https://www.aljazeera.com",
+            "description": "International news",
+            "category": "news"
+        },
+        {
+            "id": 7,
+            "title": "NPR",
+            "url": "https://www.npr.org",
+            "description": "Public radio news",
+            "category": "news"
+        },
+        {
+            "id": 8,
+            "title": "Forbes",
+            "url": "https://www.forbes.com",
+            "description": "Business news",
+            "category": "news"
+        },
+        {
+            "id": 9,
+            "title": "TechCrunch",
+            "url": "https://techcrunch.com",
+            "description": "Tech news",
+            "category": "news"
+        },
+        {
+            "id": 10,
+            "title": "The Verge",
+            "url": "https://www.theverge.com",
+            "description": "Technology news",
+            "category": "news"
+        }
+    ],
+    "programming": [
+        {
+            "id": 1,
+            "title": "W3Schools",
+            "url": "https://www.w3schools.com",
+            "description": "Web development tutorials",
+            "category": "programming"
+        },
+        {
+            "id": 2,
+            "title": "MDN Web Docs",
+            "url": "https://developer.mozilla.org",
+            "description": "Web development reference",
+            "category": "programming"
+        },
+        {
+            "id": 3,
             "title": "Stack Overflow",
             "url": "https://stackoverflow.com",
             "description": "Programming Q&A",
             "category": "programming"
         },
         {
-            "id": 3,
+            "id": 4,
             "title": "GitHub",
             "url": "https://github.com",
             "description": "Code hosting",
             "category": "programming"
         },
         {
+            "id": 5,
+            "title": "GitLab",
+            "url": "https://gitlab.com",
+            "description": "Code repository",
+            "category": "programming"
+        },
+        {
+            "id": 6,
+            "title": "Bitbucket",
+            "url": "https://bitbucket.org",
+            "description": "Code hosting",
+            "category": "programming"
+        },
+        {
+            "id": 7,
+            "title": "Dev.to",
+            "url": "https://dev.to",
+            "description": "Developer community",
+            "category": "programming"
+        },
+        {
+            "id": 8,
+            "title": "CodePen",
+            "url": "https://codepen.io",
+            "description": "Web code sharing",
+            "category": "programming"
+        },
+        {
+            "id": 9,
+            "title": "JSFiddle",
+            "url": "https://jsfiddle.net",
+            "description": "Code testing",
+            "category": "programming"
+        },
+        {
+            "id": 10,
+            "title": "LeetCode",
+            "url": "https://leetcode.com",
+            "description": "Coding practice",
+            "category": "programming"
+        }
+    ],
+    "tools": [
+        {
+            "id": 1,
+            "title": "Google Translate",
+            "url": "https://translate.google.com",
+            "description": "Translation service",
+            "category": "tools"
+        },
+        {
+            "id": 2,
+            "title": "Canva",
+            "url": "https://www.canva.com",
+            "description": "Graphic design",
+            "category": "tools"
+        },
+        {
+            "id": 3,
+            "title": "Figma",
+            "url": "https://www.figma.com",
+            "description": "UI/UX design",
+            "category": "tools"
+        },
+        {
             "id": 4,
-            "title": "MDN Web Docs",
-            "url": "https://developer.mozilla.org",
-            "description": "Web development docs",
-            "category": "documentation"
+            "title": "Notion",
+            "url": "https://www.notion.so",
+            "description": "Note taking",
+            "category": "tools"
+        },
+        {
+            "id": 5,
+            "title": "Trello",
+            "url": "https://trello.com",
+            "description": "Project management",
+            "category": "tools"
+        },
+        {
+            "id": 6,
+            "title": "Slack",
+            "url": "https://slack.com",
+            "description": "Team communication",
+            "category": "tools"
+        },
+        {
+            "id": 7,
+            "title": "Zoom",
+            "url": "https://zoom.us",
+            "description": "Video conferencing",
+            "category": "tools"
+        },
+        {
+            "id": 8,
+            "title": "Dropbox",
+            "url": "https://www.dropbox.com",
+            "description": "File storage",
+            "category": "tools"
+        },
+        {
+            "id": 9,
+            "title": "Google Drive",
+            "url": "https://drive.google.com",
+            "description": "Cloud storage",
+            "category": "tools"
+        },
+        {
+            "id": 10,
+            "title": "Adobe XD",
+            "url": "https://www.adobe.com/products/xd.html",
+            "description": "UI design tool",
+            "category": "tools"
+        }
+    ],
+    "entertainment": [
+        {
+            "id": 1,
+            "title": "YouTube",
+            "url": "https://www.youtube.com",
+            "description": "Video sharing",
+            "category": "entertainment"
+        },
+        {
+            "id": 2,
+            "title": "Netflix",
+            "url": "https://www.netflix.com",
+            "description": "Streaming movies",
+            "category": "entertainment"
+        },
+        {
+            "id": 3,
+            "title": "Spotify",
+            "url": "https://www.spotify.com",
+            "description": "Music streaming",
+            "category": "entertainment"
+        },
+        {
+            "id": 4,
+            "title": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "description": "Streaming service",
+            "category": "entertainment"
+        },
+        {
+            "id": 5,
+            "title": "HBO Max",
+            "url": "https://www.hbomax.com",
+            "description": "Streaming service",
+            "category": "entertainment"
+        },
+        {
+            "id": 6,
+            "title": "Amazon Prime",
+            "url": "https://www.amazon.com/primevideo",
+            "description": "Streaming service",
+            "category": "entertainment"
+        },
+        {
+            "id": 7,
+            "title": "Twitch",
+            "url": "https://www.twitch.tv",
+            "description": "Live streaming",
+            "category": "entertainment"
+        },
+        {
+            "id": 8,
+            "title": "Reddit",
+            "url": "https://www.reddit.com",
+            "description": "Social news",
+            "category": "entertainment"
+        },
+        {
+            "id": 9,
+            "title": "Pinterest",
+            "url": "https://www.pinterest.com",
+            "description": "Image sharing",
+            "category": "entertainment"
+        },
+        {
+            "id": 10,
+            "title": "SoundCloud",
+            "url": "https://soundcloud.com",
+            "description": "Audio platform",
+            "category": "entertainment"
+        }
+    ],
+    "shopping": [
+        {
+            "id": 1,
+            "title": "Amazon",
+            "url": "https://www.amazon.com",
+            "description": "Online shopping",
+            "category": "shopping"
+        },
+        {
+            "id": 2,
+            "title": "eBay",
+            "url": "https://www.ebay.com",
+            "description": "Auction site",
+            "category": "shopping"
+        },
+        {
+            "id": 3,
+            "title": "Walmart",
+            "url": "https://www.walmart.com",
+            "description": "Retail store",
+            "category": "shopping"
+        },
+        {
+            "id": 4,
+            "title": "Target",
+            "url": "https://www.target.com",
+            "description": "Retail store",
+            "category": "shopping"
+        },
+        {
+            "id": 5,
+            "title": "Best Buy",
+            "url": "https://www.bestbuy.com",
+            "description": "Electronics",
+            "category": "shopping"
+        },
+        {
+            "id": 6,
+            "title": "Etsy",
+            "url": "https://www.etsy.com",
+            "description": "Handmade items",
+            "category": "shopping"
+        },
+        {
+            "id": 7,
+            "title": "AliExpress",
+            "url": "https://www.aliexpress.com",
+            "description": "Chinese products",
+            "category": "shopping"
+        },
+        {
+            "id": 8,
+            "title": "Wish",
+            "url": "https://www.wish.com",
+            "description": "Discount shopping",
+            "category": "shopping"
+        },
+        {
+            "id": 9,
+            "title": "Shopify",
+            "url": "https://www.shopify.com",
+            "description": "E-commerce platform",
+            "category": "shopping"
+        },
+        {
+            "id": 10,
+            "title": "Overstock",
+            "url": "https://www.overstock.com",
+            "description": "Online retailer",
+            "category": "shopping"
+        }
+    ],
+    "health": [
+        {
+            "id": 1,
+            "title": "WebMD",
+            "url": "https://www.webmd.com",
+            "description": "Health information",
+            "category": "health"
+        },
+        {
+            "id": 2,
+            "title": "Healthline",
+            "url": "https://www.healthline.com",
+            "description": "Health news",
+            "category": "health"
+        },
+        {
+            "id": 3,
+            "title": "Mayo Clinic",
+            "url": "https://www.mayoclinic.org",
+            "description": "Medical center",
+            "category": "health"
+        },
+        {
+            "id": 4,
+            "title": "WHO",
+            "url": "https://www.who.int",
+            "description": "World Health Organization",
+            "category": "health"
+        },
+        {
+            "id": 5,
+            "title": "CDC",
+            "url": "https://www.cdc.gov",
+            "description": "Disease control",
+            "category": "health"
+        },
+        {
+            "id": 6,
+            "title": "MedlinePlus",
+            "url": "https://medlineplus.gov",
+            "description": "Health resources",
+            "category": "health"
+        },
+        {
+            "id": 7,
+            "title": "NIH",
+            "url": "https://www.nih.gov",
+            "description": "National Institutes of Health",
+            "category": "health"
+        },
+        {
+            "id": 8,
+            "title": "Cleveland Clinic",
+            "url": "https://my.clevelandclinic.org",
+            "description": "Medical information",
+            "category": "health"
+        },
+        {
+            "id": 9,
+            "title": "Harvard Health",
+            "url": "https://www.health.harvard.edu",
+            "description": "Health articles",
+            "category": "health"
+        },
+        {
+            "id": 10,
+            "title": "NHS",
+            "url": "https://www.nhs.uk",
+            "description": "UK Health Service",
+            "category": "health"
+        }
+    ],
+    "jobs": [
+        {
+            "id": 1,
+            "title": "LinkedIn",
+            "url": "https://www.linkedin.com",
+            "description": "Professional network",
+            "category": "jobs"
+        },
+        {
+            "id": 2,
+            "title": "Indeed",
+            "url": "https://www.indeed.com",
+            "description": "Job search",
+            "category": "jobs"
+        },
+        {
+            "id": 3,
+            "title": "Glassdoor",
+            "url": "https://www.glassdoor.com",
+            "description": "Job reviews",
+            "category": "jobs"
+        },
+        {
+            "id": 4,
+            "title": "Monster",
+            "url": "https://www.monster.com",
+            "description": "Job search",
+            "category": "jobs"
+        },
+        {
+            "id": 5,
+            "title": "Upwork",
+            "url": "https://www.upwork.com",
+            "description": "Freelance jobs",
+            "category": "jobs"
+        },
+        {
+            "id": 6,
+            "title": "Fiverr",
+            "url": "https://www.fiverr.com",
+            "description": "Freelance marketplace",
+            "category": "jobs"
+        },
+        {
+            "id": 7,
+            "title": "Freelancer",
+            "url": "https://www.freelancer.com",
+            "description": "Freelance jobs",
+            "category": "jobs"
+        },
+        {
+            "id": 8,
+            "title": "SimplyHired",
+            "url": "https://www.simplyhired.com",
+            "description": "Job search",
+            "category": "jobs"
+        },
+        {
+            "id": 9,
+            "title": "CareerBuilder",
+            "url": "https://www.careerbuilder.com",
+            "description": "Job search",
+            "category": "jobs"
+        },
+        {
+            "id": 10,
+            "title": "Dice",
+            "url": "https://www.dice.com",
+            "description": "Tech jobs",
+            "category": "jobs"
         }
     ]
 }

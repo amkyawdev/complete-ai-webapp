@@ -1,18 +1,298 @@
 {
-    "links": [
+    "educational": [
         {
             "id": 1,
-            "title": "Google",
-            "url": "https://www.google.com",
-            "description": "Search engine",
-            "tags": ["search", "web"]
+            "title": "မြန်မာစာအရေးအသား",
+            "url": "https://my.wikipedia.org",
+            "description": "မြန်မာစာသင်ယူရန်",
+            "category": "education"
         },
         {
             "id": 2,
-            "title": "Wikipedia",
-            "url": "https://www.wikipedia.org",
-            "description": "Free encyclopedia",
-            "tags": ["knowledge", "reference"]
+            "title": "ပါဠိသင်ယူရန်",
+            "url": "https://pali.sdsu.edu",
+            "description": "ပါဠိဘာသာစကားသင်ယူရန်",
+            "category": "education"
+        },
+        {
+            "id": 3,
+            "title": "သမိုင်းသင်ယူရန်",
+            "url": "https://history.moe.gov.mm",
+            "description": "မြန်မာသမိုင်းသင်ယူရန်",
+            "category": "education"
+        },
+        {
+            "id": 4,
+            "title": "သတ္တဗေဒ",
+            "url": "https://science.moe.gov.mm",
+            "description": "သတ္တဗေဒသင်ယူရန်",
+            "category": "education"
+        },
+        {
+            "id": 5,
+            "title": "သင်္ချာ",
+            "url": "https://math.moe.gov.mm",
+            "description": "သင်္ချာသင်ယူရန်",
+            "category": "education"
+        }
+    ],
+    "news": [
+        {
+            "id": 1,
+            "title": "မြန်မာသတင်း",
+            "url": "https://www.myanmarnews.com",
+            "description": "နေ့စဉ်သတင်းများ",
+            "category": "news"
+        },
+        {
+            "id": 2,
+            "title": "BBC မြန်မာ",
+            "url": "https://www.bbc.com/burmese",
+            "description": "နိုင်ငံတကာသတင်း",
+            "category": "news"
+        },
+        {
+            "id": 3,
+            "title": "VOA မြန်မာ",
+            "url": "https://www.voanews.com/burmese",
+            "description": "အမေရိကန်သတင်း",
+            "category": "news"
+        },
+        {
+            "id": 4,
+            "title": "ဧရာဝတီသတင်း",
+            "url": "https://irrawaddy.com/burmese",
+            "description": "သတင်းဝက်ဆိုက်",
+            "category": "news"
+        },
+        {
+            "id": 5,
+            "title": "သတင်းပါပီ",
+            "url": "https://news.mpt.com.mm",
+            "description": "မြန်မာသတင်းများ",
+            "category": "news"
+        }
+    ],
+    "programming": [
+        {
+            "id": 1,
+            "title": "W3Schools မြန်မာ",
+            "url": "https://www.w3schools.com",
+            "description": "ပရိုဂရမ်းမင်းသင်ယူရန်",
+            "category": "programming"
+        },
+        {
+            "id": 2,
+            "title": "MDN Web Docs",
+            "url": "https://developer.mozilla.org",
+            "description": "ဝဘ်ဖွံ့ဖြိုးတိုးတက်ရန်",
+            "category": "programming"
+        },
+        {
+            "id": 3,
+            "title": "Stack Overflow",
+            "url": "https://stackoverflow.com",
+            "description": "ပရိုဂရမ်းမင်းမေးခွန်းများ",
+            "category": "programming"
+        },
+        {
+            "id": 4,
+            "title": "GitHub",
+            "url": "https://github.com",
+            "description": "ကုဒ်သိမ်းဆည်းရန်",
+            "category": "programming"
+        },
+        {
+            "id": 5,
+            "title": "JavaScript.info",
+            "url": "https://javascript.info",
+            "description": "JavaScript သင်ယူရန်",
+            "category": "programming"
+        }
+    ],
+    "tools": [
+        {
+            "id": 1,
+            "title": "Google Translate",
+            "url": "https://translate.google.com",
+            "description": "ဘာသာပြန်ရန်",
+            "category": "tools"
+        },
+        {
+            "id": 2,
+            "title": "Canva",
+            "url": "https://www.canva.com",
+            "description": "ဒီဇိုင်းလုပ်ရန်",
+            "category": "tools"
+        },
+        {
+            "id": 3,
+            "title": "Figma",
+            "url": "https://www.figma.com",
+            "description": "UI/UX ဒီဇိုင်း",
+            "category": "tools"
+        },
+        {
+            "id": 4,
+            "title": "Notion",
+            "url": "https://www.notion.so",
+            "description": "မှတ်စုရေးသားရန်",
+            "category": "tools"
+        },
+        {
+            "id": 5,
+            "title": "Trello",
+            "url": "https://trello.com",
+            "description": "ပရောဂျက်မန်နေဂျ်မန်နေဂျ်",
+            "category": "tools"
+        }
+    ],
+    "entertainment": [
+        {
+            "id": 1,
+            "title": "YouTube",
+            "url": "https://www.youtube.com",
+            "description": "ဗွီဒီယိုကြည့်ရန်",
+            "category": "entertainment"
+        },
+        {
+            "id": 2,
+            "title": "Facebook",
+            "url": "https://www.facebook.com",
+            "description": "ဆိုရှယ်မီဒီယာ",
+            "category": "entertainment"
+        },
+        {
+            "id": 3,
+            "title": "TikTok",
+            "url": "https://www.tiktok.com",
+            "description": "short videos",
+            "category": "entertainment"
+        },
+        {
+            "id": 4,
+            "title": "Spotify",
+            "url": "https://www.spotify.com",
+            "description": "ဂီယိုနားဆင်ရန်",
+            "category": "entertainment"
+        },
+        {
+            "id": 5,
+            "title": "Netflix",
+            "url": "https://www.netflix.com",
+            "description": "ရုပ်ရှင်ကြည့်ရန်",
+            "category": "entertainment"
+        }
+    ],
+    "shopping": [
+        {
+            "id": 1,
+            "title": "Shopee မြန်မာ",
+            "url": "https://shopee.mm",
+            "description": "အွန်လိုင်းဈေးဝယ်ရန်",
+            "category": "shopping"
+        },
+        {
+            "id": 2,
+            "title": "Amazon",
+            "url": "https://www.amazon.com",
+            "description": "ကမ္ဘာ့ဈေးဝယ်ရန်",
+            "category": "shopping"
+        },
+        {
+            "id": 3,
+            "title": "eBay",
+            "url": "https://www.ebay.com",
+            "description": "အေးဘေးဈေးဝယ်ရန်",
+            "category": "shopping"
+        },
+        {
+            "id": 4,
+            "title": "Alibaba",
+            "url": "https://www.alibaba.com",
+            "description": "တရုတ်ဈေးဝယ်ရန်",
+            "category": "shopping"
+        },
+        {
+            "id": 5,
+            "title": "Lazada မြန်မာ",
+            "url": "https://www.lazada.com.mm",
+            "description": "လာဇာဒါဈေးဝယ်ရန်",
+            "category": "shopping"
+        }
+    ],
+    "health": [
+        {
+            "id": 1,
+            "title": "ကျန်းမာရေးဝက်ဆိုက်",
+            "url": "https://www.mohs.gov.mm",
+            "description": "ကျန်းမာရေးသတင်းများ",
+            "category": "health"
+        },
+        {
+            "id": 2,
+            "title": "WebMD",
+            "url": "https://www.webmd.com",
+            "description": "ကျန်းမာရေးသတင်း",
+            "category": "health"
+        },
+        {
+            "id": 3,
+            "title": "Healthline",
+            "url": "https://www.healthline.com",
+            "description": "ကျန်းမာရေးအကြံပါးလွှာ",
+            "category": "health"
+        },
+        {
+            "id": 4,
+            "title": "Mayo Clinic",
+            "url": "https://www.mayoclinic.org",
+            "description": "ကျန်းမာရေးအကူညီ",
+            "category": "health"
+        },
+        {
+            "id": 5,
+            "title": "WHO",
+            "url": "https://www.who.int",
+            "description": "ကမ္ဘာ့ကျန်းမာရေးအဖွဲ့",
+            "category": "health"
+        }
+    ],
+    "jobs": [
+        {
+            "id": 1,
+            "title": "JobStreet Myanmar",
+            "url": "https://www.jobstreet.com.mm",
+            "description": "အလုပ်ရှာရန်",
+            "category": "jobs"
+        },
+        {
+            "id": 2,
+            "title": "Indeed Myanmar",
+            "url": "https://mm.indeed.com",
+            "description": "အလုပ်ရှာရန်",
+            "category": "jobs"
+        },
+        {
+            "id": 3,
+            "title": "LinkedIn",
+            "url": "https://www.linkedin.com",
+            "description": "ပရော်ဖက်ရှင်းဆိုင်ရန်",
+            "category": "jobs"
+        },
+        {
+            "id": 4,
+            "title": "Glassdoor",
+            "url": "https://www.glassdoor.com",
+            "description": "အလုပ်အကြံပါးလွှာ",
+            "category": "jobs"
+        },
+        {
+            "id": 5,
+            "title": "Upwork",
+            "url": "https://www.upwork.com",
+            "description": "ဖရီလန်းအလုပ်များ",
+            "category": "jobs"
         }
     ]
 }
