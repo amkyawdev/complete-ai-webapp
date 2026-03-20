@@ -5,7 +5,7 @@ Modern AI chat platform with Cloudflare Workers backend.
 ## Structure
 
 ```
-ai-chat-platform/
+complete-ai-webapp/
 ├── index.html              # Gateway → apps/web redirect
 ├── apps/web/             # Frontend (SPA)
 │   ├── index.html
